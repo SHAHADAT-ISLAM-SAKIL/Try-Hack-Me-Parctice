@@ -1,0 +1,438 @@
+3. Search Skills:
+1 Task: 
+Learning Objectives
+The goal of this lesson is to teach:
+
+Evaluate information sources
+Use search engines efficiently
+Explore specialized search engines
+Read technical documentation
+Make use of social media
+Check news outlets
+2 task : 
+3. তথ্য যাচাই করার ৪টা গুরুত্বপূর্ণ বিষয়
+✅ (1) Source — কে লিখেছে?
+
+নিজেকে প্রশ্ন করো:
+
+লেখক কে?
+
+সে কি এই বিষয়ের এক্সপার্ট?
+
+নাকি শুধু ব্লগ খুলে লিখেছে?
+
+📌 ব্লগ লিখলেই কেউ এক্সপার্ট হয় না।
+
+✅ (2) Evidence & Reasoning — প্রমাণ আছে কি?
+
+দেখতে হবে:
+
+লেখার পেছনে ডাটা, রিসার্চ, রেফারেন্স আছে কি না
+
+শুধু “আমার মতে” টাইপ কথা নাকি বাস্তব প্রমাণ?
+
+👉 আমরা চাই:
+
+Hard facts
+
+Logical explanation
+
+✅ (3) Objectivity & Bias — পক্ষপাত আছে কি?
+
+এখানে বোঝানো হচ্ছে:
+
+লেখাটা কি নিরপেক্ষ?
+
+নাকি—
+
+নিজের প্রোডাক্ট বিক্রি করার চেষ্টা
+
+অন্য কাউকে খারাপ দেখানোর চেষ্টা
+
+📌 লুকানো এজেন্ডা থাকলে সাবধান।
+
+✅ (4) Corroboration & Consistency — অন্য জায়গায় মিলছে কি?
+
+মানে:
+
+একই কথা কি একাধিক নির্ভরযোগ্য জায়গায় বলা হয়েছে?
+
+নাকি শুধু একটাই সোর্সে পাওয়া যাচ্ছে?
+
+👉 ভালো তথ্য হলে:
+
+অনেক trusted source-এ একই কথা পাওয়া যাবে।
+
+1️⃣ What do you call a cryptographic method or product considered bogus or fraudulent?
+👉 Snake Oil
+
+2️⃣ What is the name of the command replacing netstat in Linux systems?
+👉 ss (Socket Statistics ✅)
+Advanced search Operators list: https://github.com/cipher387/Advanced-search-operators-list?tab=readme-ov-file
+
+
+Task 2: 
+# Google Search Operators – Quick Cheat Sheet
+
+## 1) "exact phrase"
+Searches for the exact word or phrase (same order).
+Example:
+"passive reconnaissance"
+
+## 2) site:
+Limits search to a specific website/domain.
+Example:
+site:tryhackme.com success stories
+
+## 3) - (minus)
+Excludes results containing a specific word.
+Example:
+pyramids -tourism
+
+## 4) filetype:
+Finds specific file types (pdf, ppt, doc, xls, etc.).
+Example:
+filetype:ppt cyber security
+
+## Combined Example
+Search exact phrase on a specific site and exclude a word:
+site:tryhackme.com "incident response" -beginner
+
+Search PDFs about malware analysis:
+filetype:pdf "malware analysis"
+
+
+
+
+
+
+
+Task 3: 
+
+# Specialized Search Engines – Comparison Table
+
+| Tool | What it is used for | What it searches | How it works | Example |
+|-----|---------------------|------------------|--------------|---------|
+| **Shodan** | Finds Internet-connected devices | Servers, routers, IoT, ICS | Scans IP addresses and reads service banners | `apache 2.4.1` |
+| **Censys** | Maps Internet assets | Hosts, websites, open ports, TLS certificates | Actively scans and indexes Internet assets | `apache 2.4.1` |
+| **VirusTotal** | Analyzes suspicious files and URLs | Files, URLs, IPs, file hashes | Scans using multiple antivirus engines | `2de70ca737c1f4602517c555ddd54165432cf231ffc0e21fb2e23b9dd14e7fb4` |
+| **Have I Been Pwned** | Checks data breach exposure | Emails and passwords | Matches input against known breach databases | `example@email.com` |
+
+
+
+
+Task 4 : 
+🔴 1️⃣ CVE (Common Vulnerabilities and Exposures)
+CVE আসলে কী?
+
+CVE হলো vulnerability-এর dictionary / ID system।
+
+👉 প্রতিটা security flaw-এর জন্য একটা unique ID দেয়
+যেমন:
+
+CVE-2014-0160
+
+
+এটাই Heartbleed vulnerability।
+
+কেন CVE দরকার?
+
+ধরো ১০ জন security researcher একই bug নিয়ে কথা বলছে।
+নাম আলাদা হতে পারে, কিন্তু—
+
+👉 CVE ID একটাই
+👉 সবাই একই vulnerability বোঝে
+
+📌 তাই CVE হলো security world-এর common language।
+
+CVE ID format
+CVE - Year - Number
+
+
+উদাহরণ:
+
+CVE-2024-29988
+
+
+2024 → vulnerability প্রকাশের বছর
+
+29988 → unique number
+
+কে CVE maintain করে?
+
+👉 MITRE Corporation
+
+আর খুঁজতে পারো:
+
+CVE Program website
+
+NVD (National Vulnerability Database)
+
+🩸 Example: Heartbleed
+CVE-2014-0160
+
+
+এই bug:
+
+OpenSSL-এ ছিল
+
+Memory leak করত
+
+Private key পর্যন্ত বের হয়ে যেত
+
+এটা ইতিহাসের সবচেয়ে famous vulnerability গুলোর একটা।
+
+🔴 2️⃣ Exploit Database (Exploit‑DB)
+Exploit Database কী?
+
+👉 এটা একটা exploit code repository
+
+মানে:
+
+Vulnerability থাকলেই exploit পাওয়া যাবে—এমন না
+
+Exploit‑DB বলে দেয় কেউ exploit বানিয়েছে কি না
+
+কী পাওয়া যায় এখানে?
+
+Exploit codes
+
+PoC (Proof of Concept)
+
+Verified exploit (tested)
+
+📌 Verified exploit মানে:
+
+কোড কাজ করে, test করা হয়েছে
+
+কখন ব্যবহার করা হয়?
+
+Red Team assessment
+
+Penetration testing
+
+Lab / CTF practice
+
+⚠️ শুধু permission থাকলে
+
+Example:
+Search: heartbleed
+
+
+→ Heartbleed exploit codes পাওয়া যায়
+
+🔴 3️⃣ GitHub এবং CVE
+GitHub এখানে কেন গুরুত্বপূর্ণ?
+
+GitHub‑এ থাকে:
+
+PoC code
+
+Testing scripts
+
+Exploit automation tools
+
+সব exploit Exploit‑DB তে থাকে না
+অনেক সময় GitHub‑এই আগে আসে।
+
+Example:
+Search on GitHub:
+CVE-2014-0160
+Heartbleed exploit
+
+
+→ Multiple repositories
+→ Different programming languages
+→ Some are educational, some dangerous
+
+🧠 পুরো flow (মনে রাখার জন্য)
+CVE → Vulnerability ID
+↓
+NVD / CVE site → Details & impact
+↓
+Exploit-DB / GitHub → Exploit or PoC
+
+🔑 এক লাইনে summary
+
+CVE → vulnerability-এর নাম/ID
+
+Exploit‑DB → ready exploit code
+
+GitHub → PoC + tools + scripts
+
+এটা TryHackMe / HTB / interview—সব জায়গায় আসে।
+
+
+
+
+Task 6 : 
+🔹 1️⃣ Linux Manual Pages (man pages)
+কী?
+
+Linux বা Unix‑like system‑এ প্রতিটি command, system call, library function, configuration file-এর জন্য থাকে manual page।
+
+সংক্ষেপে বলা যায়: man page = command এর official documentation।
+
+কীভাবে ব্যবহার করা হয়?
+
+Terminal এ লিখো:
+
+man ip
+
+
+এটা ip command এর complete documentation দেখাবে।
+
+বের হতে: press q
+
+Browser version
+
+Man page ওয়েবেও পাওয়া যায়। Google এ লিখতে পারো:
+
+man ip
+
+
+Official/manual page top result-এ আসবে।
+
+Example
+
+man ls → দেখাবে ls command‑এর options, syntax, examples
+
+📌 Benefit:
+
+Always official, accurate, and updated
+
+Explains every flag, argument, and example
+
+🔹 2️⃣ Microsoft Windows Documentation
+কী?
+
+Microsoft তাদের সকল products-এর জন্য Technical Documentation রাখে।
+
+এটা official এবং trusted source।
+
+Example
+
+Command:
+
+ipconfig
+
+
+Microsoft documentation এ গেলে:
+
+Syntax, options, examples
+
+Default behavior explained
+
+🔹 3️⃣ Product Documentation (General)
+কী?
+
+প্রতিটি বড় software বা product-এর জন্য থাকে well-organized official documentation।
+
+Examples
+Product	Documentation
+Snort	Snort Official Documentation
+Apache HTTP Server	Apache HTTP Server Documentation
+PHP	PHP Documentation
+Node.js	Node.js Documentation
+Benefit
+
+Most reliable source
+
+Always up-to-date
+
+Explains features, functions, configuration, and usage
+
+# Linux & Windows Command Quick Reference
+
+| Command / Tool | Meaning / Purpose | Example / Usage |
+|----------------|-----------------|----------------|
+| **cat** (Linux) | Concatenate – used to display or combine files | `cat file1.txt file2.txt > combined.txt` |
+| **netstat -b** (Windows) | Shows the executable associated with each active connection and listening port | `netstat -b` |
+
+---
+
+## Notes:
+- `cat` is a basic Linux command for viewing file contents or merging files.
+- `netstat -b` in Windows helps identify which program is using which network port.
+- Always check `man <command>` in Linux or `netstat /?` in Windows for official usage details.
+
+
+
+
+
+Task 7 :
+# Social Media OSINT Quick Reference
+
+| Goal / Scenario | Best Social Media Platform | Purpose |
+|-----------------|--------------------------|---------|
+| Learn technical background of an employee | LinkedIn | Professional info: job history, skills, education |
+| Find answers to secret questions (childhood school, hometown) | Facebook | Personal info that could help with social engineering or security testing |
+
+
+
+
+
+
+
+
+
+
+All in one for Search Skills :
+
+# OSINT & Cybersecurity Quick Reference
+
+## 1️⃣ Specialized Search Engines
+
+| Tool | Purpose | Example |
+|------|---------|---------|
+| Shodan | Search Internet-connected devices (servers, IoT, ICS) | `apache 2.4.1` |
+| Censys | Search Internet assets, hosts, websites, certificates | `apache 2.4.1` |
+| VirusTotal | Scan files, URLs, hashes with multiple antivirus engines | `2de70ca737c1f4602517c555ddd54165432cf231ffc0e21fb2e23b9dd14e7fb4` |
+| Have I Been Pwned (HIBP) | Check if email/password appeared in breaches | `example@email.com` |
+
+---
+
+## 2️⃣ Vulnerabilities & Exploits
+
+| Resource | Purpose | Example |
+|----------|---------|---------|
+| CVE (MITRE / NVD) | Standardized vulnerability IDs | `CVE-2014-0160` (Heartbleed) |
+| Exploit Database | Verified exploit codes / PoC | Search: `heartbleed` |
+| GitHub | PoC, scripts, tools related to vulnerabilities | Search: `CVE-2014-0160 exploit` |
+
+---
+
+## 3️⃣ Linux & Windows Commands
+
+| Command / Tool | Purpose | Example |
+|----------------|---------|---------|
+| `cat` (Linux) | Concatenate / display files | `cat file1.txt file2.txt > combined.txt` |
+| `man` (Linux) | Official Linux command documentation | `man ip` |
+| `netstat -b` (Windows) | Shows executable for each active connection | `netstat -b` |
+| Microsoft Tech Docs | Official Windows command documentation | Search: `ipconfig` |
+
+---
+
+## 4️⃣ Social Media for OSINT
+
+| Goal / Scenario | Platform | Purpose |
+|-----------------|---------|---------|
+| Learn technical background | LinkedIn | Job history, skills, education |
+| Find answers to secret questions | Facebook | Personal info for social engineering awareness |
+| Stay updated on cybersecurity trends | Security Groups / News Outlets | News, vulnerabilities, tools |
+
+---
+
+### Notes
+- Always prefer **official documentation** for accurate info.  
+- Use **specialized search engines** for asset discovery and threat intelligence.  
+- Social media should be used **ethically** and responsibly.  
+- Subscribe to relevant **security groups/news outlets** to stay updated.  
+- Combine CVE, Exploit-DB, and GitHub searches for vulnerability research.  
+
+---
+
+This reference sheet is **GitHub-ready** and can be used for **OSINT, TryHackMe labs, penetration testing, and cybersecurity learning**.
+
+
+
