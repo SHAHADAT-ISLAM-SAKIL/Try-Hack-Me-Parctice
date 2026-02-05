@@ -1,1 +1,173 @@
 
+🐧 Linux Basic Commands & Operators Notes
+
+This repository contains basic Linux commands and operators with clear explanations and examples.
+Useful for beginners, TryHackMe learners, and cybersecurity students.
+
+📂 Commands Covered
+
+ls
+
+cd
+
+cd ..
+
+pwd
+
+find -name
+
+find -name "*.txt"
+
+grep
+
+&
+
+&&
+
+>
+
+>>
+
+📌 1. ls – List Directory Contents
+
+Description:
+Shows all files and folders in the current directory.
+
+Example:
+
+ls
+
+
+Output:
+
+access.log  folder1  folder2  folder3
+
+📌 2. cd – Change Directory
+
+Description:
+Used to move into another directory.
+
+Example:
+
+cd folder1
+
+📌 3. cd .. – Go Back One Directory
+
+Description:
+Moves back to the parent directory.
+
+Example:
+
+cd ..
+
+📌 4. pwd – Print Working Directory
+
+Description:
+Displays the full path of the current directory.
+
+Example:
+
+pwd
+
+
+Output:
+
+/home/tryhackme
+
+📌 5. find -name – Find a File by Name
+
+Description:
+Searches for a file or folder by its exact name.
+
+Example:
+
+find -name passwords.txt
+
+
+Output:
+
+./folder1/passwords.txt
+
+📌 6. find -name "*.txt" – Find All .txt Files
+
+Description:
+Finds all files ending with .txt using a wildcard.
+
+Example:
+
+find -name "*.txt"
+
+
+Output:
+
+./folder1/passwords.txt
+./Documents/todo.txt
+
+📌 7. grep "THM" access.log – Search Inside a File
+
+Description:
+Searches inside access.log for lines containing THM.
+
+Example:
+
+grep "THM" access.log
+
+
+Output:
+
+THM{GREP_ME}
+
+⚙️ Linux Operators
+📌 8. & – Run Command in Background
+
+Description:
+Runs a command in the background so you can continue working.
+
+Example:
+
+cp bigfile.zip /backup/ &
+
+📌 9. && – Run Next Command if First Succeeds
+
+Description:
+Runs multiple commands in one line.
+Second command runs only if the first is successful.
+
+Example:
+
+mkdir test && cd test
+
+📌 10. > – Output Redirect (Overwrite)
+
+Description:
+Redirects output to a file and overwrites existing content.
+
+Example:
+
+echo password123 > passwords
+
+📌 11. >> – Output Redirect (Append)
+
+Description:
+Appends output to the end of a file without deleting existing content.
+
+Example:
+
+echo tryhackme >> passwords
+
+🧠 Quick Practice Flow
+ls
+cd folder4
+pwd
+find -name "*.txt"
+grep "THM" access.log
+
+✅ Useful For
+
+Linux beginners
+
+TryHackMe practice
+
+Cybersecurity fundamentals
+
+Exam revision
