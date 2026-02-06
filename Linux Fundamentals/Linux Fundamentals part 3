@@ -1,1 +1,269 @@
+🐧 Linux Commands Notes (Cyber Security / TryHackMe)
+🔐 SSH (Remote Login)
+📌 Command
+ssh tryhackme@10.10.231.247
 
+🧠 কাজ কী?
+
+অন্য একটা Linux machine / server-এ secureভাবে ঢোকার জন্য
+
+এখানে:
+
+tryhackme = username
+
+10.10.231.247 = target machine IP
+
+👉 Remote lab, CTF, server access–এ ব্যবহার হয়।
+
+📝 echo, >, >>
+🔹 echo
+echo "hi THM"
+
+
+➡️ টার্মিনালে লেখা প্রিন্ট করে
+
+🔹 Output file-এ লেখা (overwrite)
+echo "hi THM" > file.txt
+
+
+➡️ file.txt না থাকলে তৈরি হবে
+➡️ থাকলে আগের লেখা মুছে নতুন লেখা বসবে
+
+🔹 Output file-এ যোগ করা (append)
+echo "hi again" >> file.txt
+
+
+➡️ আগের লেখার নিচে যোগ হবে
+
+✍️ Text Editor: nano & vim
+🔹 nano
+nano filename
+
+
+সহজ text editor
+
+Beginner-friendly
+
+📌 Save: Ctrl + O
+📌 Exit: Ctrl + X
+
+🔹 vim
+vim filename
+
+
+Advanced editor
+
+Cyber / server-এ বেশি ব্যবহৃত
+
+📌 Insert mode: i
+📌 Save & exit: :wq
+📌 Exit without save: :q!
+
+🌐 Download Commands
+🔹 wget
+wget http://example.com/file.txt
+
+
+➡️ URL থেকে file download করে
+
+🔹 curl
+curl http://example.com
+
+
+➡️ Web content fetch করে (API, headers, testing)
+
+📌 Download করতে:
+
+curl -O http://example.com/file.txt
+
+🔹 scp (Secure Copy)
+scp file.txt user@ip:/path
+
+
+➡️ এক machine থেকে আরেকটায় secure file copy
+
+🌍 Simple Web Server (Python)
+python3 -m http.server
+
+
+➡️ Current directory কে web server বানায়
+➡️ Port: 8000
+
+Use case:
+
+File share
+
+CTF lab
+
+📂 File Listing
+🔹 ls -l
+ls -l
+
+
+➡️ Permission, owner, size সহ list
+
+🔹 ls -a
+ls -a
+
+
+➡️ Hidden files সহ সব দেখায়
+
+📖 File Read
+cat .flag.txt
+
+
+➡️ File content দেখায়
+➡️ CTF flag পড়তে বেশি ব্যবহার হয়
+
+⚙️ Process Management
+🔹 ps
+ps
+
+
+➡️ Current shell-এর process দেখায়
+
+🔹 ps aux
+ps aux
+
+
+➡️ System-এর সব running process
+
+🔹 top
+top
+
+
+➡️ Live process monitor (CPU, RAM)
+
+🔹 kill
+kill 1337
+
+
+➡️ PID 1337 process বন্ধ করে
+
+⏸️ Background & Job Control
+🔹 Background run
+echo "hi THM" &
+
+
+Output:
+
+[1] 16889
+
+
+[1] = job number
+
+16889 = process ID
+
+🔹 Stop process (temporary)
+Ctrl + Z
+
+🔹 Resume foreground
+fg
+
+📜 View large output safely
+ps aux | less
+
+
+➡️ Scroll করে দেখা যায়
+➡️ q দিয়ে exit
+
+🔁 System Services (systemctl)
+
+⚠️ ঠিক command: systemctl (systemct1 না)
+
+🔹 Service start
+systemctl start apache2
+
+🔹 Service stop
+systemctl stop apache2
+
+🔹 Enable (boot-এর সময় auto start)
+systemctl enable apache2
+
+🔹 Disable
+systemctl disable apache2
+
+⏰ Cron Jobs (Auto task)
+🔹 Cron কী?
+
+➡️ নির্দিষ্ট সময় পরপর command চালানো
+
+🔹 Edit cron
+crontab -e
+
+
+Example:
+
+* * * * * echo "hello" >> test.txt
+
+
+➡️ প্রতি মিনিটে run হবে
+
+📦 Package Management (APT)
+🔹 Update repo
+apt update
+
+🔹 Install software
+apt install sublime-text
+
+🔹 Remove software
+apt remove sublime-text
+
+🔹 Add repository
+add-apt-repository ppa:PPA_Name/ppa
+
+🔹 Remove repository
+add-apt-repository --remove ppa:PPA_Name/ppa
+
+🔹 dpkg
+dpkg -i package.deb
+
+
+➡️ .deb file install
+
+🔹 Add key
+sudo apt-key add -
+
+
+➡️ Repository authentication key add
+
+🗂️ File Create
+touch file.txt
+
+
+➡️ Empty file তৈরি
+
+📊 Logs (Very Important for Cyber)
+🔹 Access log
+/var/log/apache2/access.log
+
+
+➡️ কে কখন website access করেছে
+
+🔹 Error log
+/var/log/apache2/error.log
+
+
+➡️ Server error info
+
+✅ Final Summary (Cheat Sheet)
+
+SSH → remote login
+
+echo > >> → write file
+
+nano / vim → edit file
+
+wget / curl → download
+
+python http.server → web server
+
+ps / top / kill → process control
+
+systemctl → service control
+
+cron → auto task
+
+apt → software install
+
+logs → /var/log
