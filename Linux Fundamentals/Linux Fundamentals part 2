@@ -1,0 +1,170 @@
+🐧 Linux Basics Notes (TryHackMe Style)
+
+Beginner-friendly Linux notes based on hands-on TryHackMe tasks.
+Perfect for Cyber Security, CTF, Linux fundamentals.
+
+📌 Task 2: SSH Command
+🔹 Command
+ssh tryhackme@10.10.137.96
+
+🔹 Explanation
+
+ssh → Secure Shell (remote login)
+
+tryhackme → username
+
+@ → separator
+
+10.10.137.96 → target machine IP
+
+✅ Used to log in to a remote Linux server securely.
+
+📌 Task 3: ls Command Variations
+🔹 List files
+ls
+
+🔹 Show hidden files
+ls -a
+ls --all
+
+
+Hidden files start with . (example: .bashrc)
+
+🔹 Help & Manual
+ls --help
+man ls
+
+🔹 Human readable size
+ls -lh
+
+
+Shows file size as K, M, G instead of bytes.
+
+📌 Task 4: File & Directory Commands
+🔹 Create file
+touch note.txt
+
+🔹 Create directory
+mkdir mydirectory
+
+🔹 Copy
+cp file1.txt file2.txt
+cp -r folder1 folder2
+
+🔹 Move / Rename
+mv old.txt new.txt
+mv file.txt folder/
+
+🔹 Remove file
+rm file.txt
+
+
+❌ Directory delete error:
+
+rm mydirectory
+rm: cannot remove 'mydirectory': Is a directory
+
+
+✅ Correct way:
+
+rm -R mydirectory
+
+
+-R = Recursive (folder + all contents)
+
+🔹 Check file type
+file note.txt
+
+
+Output:
+
+note.txt: ASCII text
+
+📌 Task 5: Permissions & Users
+🔹 Long listing
+ls -l
+
+
+Example:
+
+-rwxr-xr--
+
+🔹 Permission meaning
+Symbol	Meaning
+r	Read
+w	Write
+x	Execute
+
+Structure:
+
+- rwx r-x r--
+  ↑   ↑   ↑
+ owner group others
+
+🔹 Switch user
+su
+
+🔹 Login as specific user
+su -l user2
+su --login user2
+
+🔹 Current directory path
+pwd
+
+📌 Task 6: Linux Directory Structure
+🔹 Important Directories
+Directory	Purpose
+/etc	Configuration files
+/var	Variable data
+/root	Root user home
+/tmp	Temporary files
+🔹 Temporary directory
+cd /tmp
+
+🔹 Detailed list
+ls -lah
+
+❓ Concept Questions (Important)
+🔹 Where are logs stored?
+/var/log
+
+🧠 Why /var/log?
+
+/var = variable data
+
+Logs constantly change
+
+So Linux stores logs in /var/log
+
+Examples:
+
+/var/log/syslog
+/var/log/auth.log
+
+🔹 Which directory works like RAM?
+/tmp
+
+🧠 Why /tmp?
+
+Temporary storage
+
+Files auto-deleted on reboot
+
+Similar behavior to RAM
+
+✅ Summary
+
+SSH → remote login
+
+ls -a → hidden files
+
+rm -R → delete directories
+
+file → detect file type
+
+Permissions → rwx
+
+Logs → /var/log
+
+RAM-like → /tmp
+
