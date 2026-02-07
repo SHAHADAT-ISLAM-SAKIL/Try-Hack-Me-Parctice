@@ -1,0 +1,78 @@
+task 1: 
+6️⃣ Windows Editions
+
+Windows 11 আছে দুইটা versionে:
+
+Home
+
+Pro
+
+এখানেই আসে আসল প্রশ্নটা 👇
+
+❓ প্রশ্ন:
+
+What encryption can you enable on Pro that you can't enable in Home?
+
+✅ সঠিক উত্তর:
+🔐 BitLocker Encryption
+🔐 BitLocker কী?
+
+BitLocker হলো:
+
+Full Disk Encryption
+
+হার্ডডিস্ক চুরি হলেও data নিরাপদ থাকে
+
+TPM (Trusted Platform Module) ব্যবহার করে
+
+BitLocker কী করে?
+
+পুরো drive encrypt করে
+
+কেউ হার্ডডিস্ক খুলে অন্য PC-তে লাগালেও data পড়তে পারবে না
+
+Corporate security-তে খুব গুরুত্বপূর্ণ
+
+Home vs Pro (Encryption Difference)
+Feature	Windows Home	Windows Pro
+Device Encryption	Limited	✅
+BitLocker	❌ No	✅ Yes
+TPM-based full disk encryption	❌	✅
+
+👉 Home-এ BitLocker নেই
+👉 Pro-তে BitLocker আছে
+
+কেন এটা Cyber Security-তে গুরুত্বপূর্ণ?
+
+Data theft প্রতিরোধ
+
+Lost laptop হলে data safe
+
+Corporate compliance (ISO, GDPR ইত্যাদি)
+
+এই কারণেই:
+
+Office
+
+Corporate
+
+Server
+সব জায়গায় Pro বা Server version ব্যবহার করা হয়।
+
+Server Context
+
+তোমার লেখায় বলা VM-টা:
+
+Windows Server 2019 Standard
+
+Server OS-এ:
+
+BitLocker
+
+Advanced security policies
+সবই থাকে।
+
+
+
+
+task 2: 
