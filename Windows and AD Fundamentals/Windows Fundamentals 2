@@ -1,0 +1,887 @@
+Task 1 : introduction
+
+🖥️ 1️⃣ Desktop
+
+Desktop হলো Windows-এর main workspace।
+
+🔹 দিয়ে কী করা যায়
+
+App / file / folder shortcut রাখা
+
+Quickly program open করা
+
+Recycle Bin access করা
+
+Right-click করে:
+
+New folder
+
+Display settings
+
+Personalize
+
+🔹 কীভাবে কাজ করে
+
+Desktop আসলে user profile-এর অংশ
+
+C:\Users\Username\Desktop
+
+
+Desktop-এ যা রাখো → সেটা ওই folder-এ save হয়
+
+📁 2️⃣ File System
+
+File System হলো Windows-এর ভিতরের structure যেখানে সব data থাকে।
+
+🔹 দিয়ে কী করা যায়
+
+File create / delete / rename
+
+Folder manage করা
+
+Drive (C:, D:) access
+
+File permission set করা
+
+🔹 কীভাবে কাজ করে
+
+Root drive → C:\
+
+Important folders:
+
+C:\Windows → OS files
+
+C:\Users → user data
+
+System32 → critical system tools
+
+👤 3️⃣ User Account Control (UAC)
+
+UAC হলো Windows-এর security feature।
+
+🔹 দিয়ে কী করা যায়
+
+System-level change confirm করা
+
+Malware থেকে protection
+
+🔹 কীভাবে কাজ করে
+
+Admin হলেও সবসময় full power দেয় না
+
+Risky কাজ করলে:
+
+UAC prompt আসে
+
+Password / Yes-No confirmation চায়
+
+Shield icon 🛡️ মানে → admin permission লাগবে
+
+⚙️ 4️⃣ Control Panel
+
+Control Panel হলো traditional system settings hub।
+
+🔹 দিয়ে কী করা যায়
+
+Program uninstall
+
+User account manage
+
+Network settings change
+
+Hardware / printer add
+
+Advanced system config
+
+🔹 কীভাবে কাজ করে
+
+Classic interface
+
+Detailed & complex settings
+
+অনেক সময় Settings থেকে redirect হয়ে এখানে আসে
+
+⚙️ 5️⃣ Settings
+
+Settings হলো modern configuration menu।
+
+🔹 দিয়ে কী করা যায়
+
+Display / Sound / Wallpaper change
+
+Wi-Fi / Internet manage
+
+Update & Security
+
+Privacy settings
+
+🔹 কীভাবে কাজ করে
+
+Windows 8 থেকে চালু
+
+Touch-friendly & user-friendly
+
+Simple settings এখানেই বেশি থাকে
+
+📊 6️⃣ Task Manager
+
+Task Manager দিয়ে system performance ও running apps দেখা যায়।
+
+🔹 দিয়ে কী করা যায়
+
+Running program end করা
+
+CPU / RAM / Disk usage দেখা
+
+Startup app enable/disable
+
+User session monitor করা
+
+🔹 কীভাবে কাজ করে
+
+Shortcut:
+
+Ctrl + Shift + Esc
+
+
+System real-time data দেখায়
+
+Hanging app force close করা যায়
+
+🔑 সব মিলিয়ে এক লাইনের summary
+
+Desktop → কাজের জায়গা
+
+File System → data structure
+
+UAC → security guard
+
+Control Panel → advanced settings
+
+Settings → easy settings
+
+Task Manager → system monitor
+
+
+
+
+
+
+
+task 2 : System Configuration and Advanced System Settings
+1️⃣ System Configuration (MSConfig)
+
+Purpose: Advanced troubleshooting, diagnose startup issues
+
+Access: Start Menu → type msconfig → open (local admin rights লাগবে)
+
+Tabs & কাজ:
+
+General → Decide কোন services & devices boot এ load হবে
+
+Options:
+
+Normal → সব load করবে
+
+Diagnostic → minimum load (like safe mode)
+
+Selective → specific service/device select করা যাবে
+
+Boot → OS boot options configure করা (Safe Mode, timeout, etc.)
+
+Services → সব system services list করে (running/stopped)
+
+Service = background program
+
+Exam Answer: Manufacturer = Sysinternals → PsShutdown
+
+Startup → Startup apps manage করা
+
+Windows Server → empty
+
+Check startup apps → Run → shell:startup
+
+Tools → Quick access to various utilities
+
+Shows launch command → run via Run or Command Prompt
+
+2️⃣ Advanced System Settings
+
+Purpose: Performance, virtual memory, system recovery control করা
+
+Access: Start → search View advanced system settings
+
+Performance Options:
+
+Page File: RAM full হলে virtual memory হিসেবে ব্যবহার হয়
+
+Details: drive, initial size, max size, auto-managed
+
+Startup and Recovery:
+
+Configure crash dump (Blue Screen / critical error)
+
+Dump types:
+
+Automatic memory dump
+
+Kernel memory dump
+
+Small memory dump (256 KB)
+
+Complete memory dump
+
+None
+
+Helps troubleshoot crashes
+
+3️⃣ Windows Services
+
+Purpose: Background apps that support OS functionality
+
+Access: MSConfig → Services tab
+
+Answer / Exam: PsShutdown
+
+Explanation:
+
+Manufacturer = Sysinternals
+
+Service name (one word) needed, not display name
+
+4️⃣ Windows License
+
+Purpose: Shows who Windows is registered to
+
+Access: System Properties → Windows activation
+
+Answer: Windows User
+
+5️⃣ Windows Troubleshooting Command
+
+Purpose: Troubleshooting tools open করা
+
+Command:
+
+C:\Windows\System32\control.exe /name Microsoft.Troubleshooting
+
+
+Explanation:
+
+control.exe → Control Panel launcher
+
+/name Microsoft.Troubleshooting → direct to Troubleshooting
+
+6️⃣ Control Panel Command
+
+Purpose: Open Control Panel directly
+
+Command: control.exe
+
+Note: Only .exe name, full path দরকার নেই
+
+7️⃣ User Account Control (UAC)
+
+Purpose: Protect system from unwanted admin changes
+
+Access: Start → search UAC → Change User Account Control settings
+
+How it works:
+
+Even admin accounts run non-elevated by default
+
+Higher privileges চাইলে → prompt আসে
+
+Example: Install program → UAC prompt
+
+Steps:
+
+Open UAC settings
+
+Move slider (notify level adjust)
+
+Click OK + confirm
+
+✅ Quick Exam-Ready Answers Table
+Question	Answer	Explanation
+Service Manufacturer = Sysinternals	PsShutdown	MSConfig → Services tab; one word = Service Name
+Windows License Registered To	Windows User	System Properties → Activation info
+Windows Troubleshooting Command	C:\Windows\System32\control.exe /name Microsoft.Troubleshooting	Open Troubleshooting directly
+Control Panel Command	control.exe	Open Control Panel directly
+Change UAC Settings	Task 3	Adjust slider to control admin prompts
+
+
+
+
+
+Task 3: Change UAC Settings
+What is the command to open User Account Control Settings? (The answer is the name of the .exe file, not the full path)
+UserAccountControlSettings.exe
+
+
+
+
+Task 4 : Computer Management
+🪟 Windows Computer Management – Notes
+🔹 Computer Management (compmgmt.msc)
+
+Computer Management is a Windows administrative tool used to manage system components from a single console.
+
+Sections:
+
+System Tools
+
+Storage
+
+Services and Applications
+
+1️⃣ System Tools
+📌 Task Scheduler
+
+Used to create, manage, and monitor scheduled tasks
+
+Tasks can run:
+
+At log on / log off
+
+On a schedule (daily, every 5 minutes, etc.)
+
+One-time only
+
+Tasks can run applications, scripts, or commands
+
+Important Example:
+
+npcapwatchdog task
+
+Purpose: Monitors Npcap service
+
+Trigger: At log on
+
+📌 Event Viewer
+
+Used to view system logs and events
+
+Helps in:
+
+Troubleshooting errors
+
+Security auditing
+
+System activity analysis
+
+Event Viewer Panes:
+
+Left → Event log tree
+
+Middle → Event details
+
+Right → Actions
+
+Common Event Types:
+
+Error
+
+Warning
+
+Information
+
+Audit Success
+
+Audit Failure
+
+📌 Shared Folders
+
+Displays shared resources on the system
+
+Subsections:
+
+Shares → List of shared folders
+
+Sessions → Users connected to shares
+
+Open Files → Files accessed by users
+
+Hidden Shared Folder Example:
+
+C$
+
+
+Default Windows administrative share
+
+$ indicates hidden share
+
+📌 Local Users and Groups
+
+Manage local users and groups
+
+Tool: lusrmgr.msc
+
+Used to assign permissions and roles
+
+📌 Performance Monitor (perfmon)
+
+Monitors system performance:
+
+CPU
+
+Memory
+
+Disk
+
+Network
+
+Supports real-time monitoring and log analysis
+
+📌 Device Manager
+
+View and manage hardware devices
+
+Tasks:
+
+Enable/disable devices
+
+Update drivers
+
+2️⃣ Storage
+📌 Disk Management
+
+Used for advanced storage configuration:
+
+Create or delete partitions
+
+Extend or shrink partitions
+
+Assign or change drive letters
+
+Initialize new disks
+
+3️⃣ Services and Applications
+📌 Services
+
+Background applications running on the system
+
+View service status and configuration
+
+Startup Types:
+
+Automatic → Starts on system boot
+
+Manual → Starts when triggered
+
+Disabled → Never starts
+
+📌 WMI Control
+
+Manages Windows Management Instrumentation (WMI)
+
+Allows system management via scripts and PowerShell
+
+WMIC is deprecated (PowerShell recommended)
+
+✅ Exam / Lab Answers
+Command to open Computer Management:
+compmgmt.msc
+
+When is the npcapwatchdog scheduled task set to run?
+At log on
+
+Name of the hidden folder that is shared:
+C$
+
+🔑 Quick Notes
+
+Hidden shares end with $
+
+Task Scheduler → Properties → Triggers = find task schedule
+
+Disk Management is the only safe way to manage partitions
+
+Services control background system behavior
+
+
+
+
+
+Task 5 : System Information
+1️⃣ System Information Tool
+
+Msinfo32.exe = Microsoft System Information tool
+
+Purpose: Computer-এর hardware, system components, এবং software environment সম্পর্কে detailed তথ্য দেখানো।
+
+Use: Diagnose computer issues, troubleshoot, বা configuration চেক করা।
+
+How to Open:
+
+Run → msinfo32.exe
+
+অথবা Start → search System Information
+
+2️⃣ Sections in System Summary
+1. Hardware Resources
+
+Shows low-level system details: IRQ, memory ranges, DMA, I/O ports
+
+Mostly advanced users/engineers use this
+
+Average user usually doesn’t need this
+
+2. Components
+
+Shows installed hardware devices
+
+Examples:
+
+Display → graphics card info
+
+Input → keyboard, mouse info
+
+Some sections may be empty depending on installed hardware
+
+3. Software Environment
+
+Shows OS-integrated and installed software
+
+Other details:
+
+Environment Variables
+
+Network Connections
+
+Environment Variables = variables that store OS-related paths and settings
+
+Example:
+
+%WINDIR% → location of Windows installation
+
+%ComSpec% → path to command interpreter (cmd.exe)
+
+Where to find Environment Variables:
+
+Control Panel → System and Security → System → Advanced system settings → Environment Variables
+
+Settings → System → About → System Info → Advanced system settings → Environment Variables
+
+3️⃣ Search in msinfo32
+
+Bottom of msinfo32 utility → search bar
+
+Example: Select Components → search IP address
+
+Shows IP configuration of the computer
+
+✅ Quick Answers (Exam/VM)
+Question	Answer	Explanation
+Command to open System Information	msinfo32.exe	.exe file opens full System Information utility
+System Name	Depends on VM, usually something like WIN-VM12345	System Name = computer’s hostname in Windows
+Value for ComSpec	C:\Windows\System32\cmd.exe	Path to command interpreter, used to run commands
+🔑 Key Points
+
+Msinfo32 gives a full snapshot of hardware + software environment
+
+Environment Variables tell programs where system files and tools are
+
+ComSpec specifically points to cmd.exe (Windows Command Prompt)
+
+Search bar in Components → easy way to find specific info like IP address
+
+
+
+
+
+
+Task 6 : Resource Monitor
+1️⃣ Resource Monitor কী?
+
+Resource Monitor (resmon.exe) = Windows এর advanced utility
+
+দেখায় CPU, memory, disk, network usage per process এবং aggregate (total) level-এ
+
+Advanced users বা IT professionals এর জন্য যাদের troubleshooting করতে হয়
+
+Key Features:
+
+কোন process কোন file/handle/module ব্যবহার করছে তা দেখানো
+
+Advanced filtering → এক বা একাধিক process আলাদা করে দেখা
+
+Services start / stop / pause / resume করা
+
+Unresponsive applications বন্ধ করা
+
+Deadlocked processes বা file-lock conflicts চিনহিত করা → problem solve করার জন্য
+
+2️⃣ Overview Tab Structure
+
+Resource Monitor খোলার পর Overview tab এ চারটি main section থাকে:
+
+Section	Function
+CPU	CPU usage per process, threads, overall load
+Memory	RAM usage per process, total memory usage, commit charge
+Disk	Disk read/write activity, which files are being accessed
+Network	Network bandwidth usage, per process data transfer
+
+এই চারটি section Tabs হিসাবেও উপরে থাকে → individual analysis এর জন্য
+
+Right pane → graphical real-time view
+
+3️⃣ Key Learnings / Takeaways
+
+Resource Monitor advanced troubleshooting এর জন্য → normal user সাধারণত না দেখে
+
+ব্যবহার করে জানতে পারো:
+
+কোন process CPU/Memory বেশি use করছে
+
+কোন file বা network resource কোন process use করছে
+
+Deadlock / file lock সমস্যার source কে
+
+Resmon real-time data + filtering এর মাধ্যমে সমস্যা শনাক্ত করতে সাহায্য করে
+
+✅ Summary (What you learned from this section)
+
+Resource Monitor = Advanced Windows tool for CPU, Memory, Disk, Network monitoring
+
+Allows per-process monitoring and system-wide resource overview
+
+Can manage processes & services → stop, start, pause, resume
+
+Helps identify deadlocks, unresponsive applications, file lock conflicts
+
+Overview tab → CPU / Memory / Disk / Network sections
+
+Right pane → real-time graphical visualization
+
+
+
+
+
+
+
+Task 7 : Command Prompt
+1️⃣ Command Prompt কী?
+
+cmd / Command Prompt = Windows-এর text-based interface
+
+GUI (Graphical User Interface) এর আগে, command line ছিল সকল কাজের মূল উপায়
+
+GUI আসার পর সাধারণ কাজ button click-এ হয়ে গেল, কিন্তু advanced users এখনও cmd দিয়ে কমান্ড চালাতে পারে
+
+Purpose:
+
+Computer information retrieve করা
+
+Troubleshooting
+
+Networking info check করা
+
+System management (user, groups, services, etc.)
+
+2️⃣ Basic Commands
+a) hostname
+
+Shows the computer name
+
+Example:
+
+C:\> hostname
+WIN-VM12345
+
+b) whoami
+
+Shows the currently logged-in user
+
+Example:
+
+C:\> whoami
+WIN-VM12345\Administrator
+
+3️⃣ Networking Commands
+a) ipconfig
+
+Shows network address settings, e.g., IP address, subnet mask, gateway
+
+Example:
+
+C:\> ipconfig
+
+
+Help manual:
+
+C:\> ipconfig /?
+
+
+→ Explains all possible parameters for ipconfig
+
+b) netstat
+
+Shows protocol statistics + current TCP/IP connections
+
+Can use parameters:
+
+netstat -a → all connections and listening ports
+
+netstat -b → shows executable involved
+
+netstat -e → ethernet statistics
+
+4️⃣ Managing network resources with net command
+
+net command = Manage network resources like users, shares, sessions
+
+Sub-commands: user, localgroup, use, share, session
+
+To get help for net command:
+
+C:\> net help
+C:\> net help user
+
+
+/?" doesn't work here, so we use net help` syntax
+
+5️⃣ Other Useful Commands
+cls
+
+Clears the screen in command prompt
+
+C:\> cls
+
+6️⃣ Key Points / Takeaways
+
+Command Prompt = Text interface to control Windows
+
+GUI makes things easy, but cmd gives more control for advanced users
+
+Useful commands covered:
+
+hostname → computer name
+
+whoami → logged-in user
+
+ipconfig → network info
+
+netstat → TCP/IP & protocol stats
+
+net → manage network resources
+
+cls → clear screen
+
+Every command has a help manual → usually /?"
+
+Exception: net → net help
+
+💡 Tip:
+
+Experiment with commands + parameters (ipconfig /all, netstat -an) → বোঝা যাবে কিভাবে output change হয়
+
+Command Prompt is very powerful for system diagnostics and troubleshooting
+
+
+
+
+task 8  : Registry Editor
+1️⃣ Windows Registry কী?
+
+Registry হলো Windows-এর central hierarchical database।
+
+এখানে সব system configuration এবং user settings stored থাকে।
+
+Microsoft অনুযায়ী, এটি ব্যবহার হয় system configure করার জন্য এক বা একাধিক user, application, এবং hardware device এর জন্য।
+
+2️⃣ Registry কি ধরনের তথ্য রাখে?
+
+User Profiles
+
+প্রতিটি user এর settings এবং preferences এখানে থাকে।
+
+উদাহরণ: Desktop background, theme, shortcuts ইত্যাদি।
+
+Installed Applications
+
+কোন কোন application installed আছে এবং কোন document types open করতে পারে তা।
+
+উদাহরণ: Word installs → .docx file type associate।
+
+Property Sheet Settings
+
+Folder এবং application icons এর settings।
+
+উদাহরণ: Folder view (list, details, icons)।
+
+Hardware Configuration
+
+কোন hardware installed আছে।
+
+কোন ports ব্যবহার হচ্ছে।
+
+3️⃣ Warning / Caution
+
+Registry advanced users-এর জন্য।
+
+ভুল changes করলে system unstable বা unbootable হতে পারে।
+
+Always backup registry before making changes।
+
+4️⃣ Registry Access / Editing
+
+Registry edit করতে হয় Registry Editor দিয়ে।
+
+Command:
+
+regedit.exe
+
+
+Run (Win + R) বা Command Prompt থেকে চালানো যায়।
+
+Takeaways
+
+Registry = Windows এর core configuration hub।
+
+User, application, hardware, and system settings সবই এখানে থাকে।
+
+Careful editing = system customization possible
+
+Careless editing = system crash
+
+💡 Tip: Registry Explorer/Editor এ changes করার আগে সবসময় export / backup করে নাও।
+
+
+
+task 9 :  conclutions
+1️⃣ Context
+
+আমরা যে room এ আছি, সেখানে MSConfig (System Configuration) থেকে accessible কিছু tools আলোচনা করা হয়েছে।
+
+Tools examples: System Information (msinfo32), Resource Monitor (resmon), Task Scheduler, Registry Editor (regedit), Computer Management (compmgmt) ইত্যাদি।
+
+2️⃣ Key Points
+
+Direct Access without MSConfig
+
+MSConfig খুলে না দিয়েও এই tools গুলো run করা যায়।
+
+উদাহরণ:
+
+msinfo32.exe → System Information
+
+resmon.exe → Resource Monitor
+
+regedit.exe → Registry Editor
+
+compmgmt.msc → Computer Management
+
+Start Menu Access
+
+অনেক tools Start Menu থেকেও সরাসরি access করা যায়।
+
+উদাহরণ: Start → search → type Resource Monitor বা Registry Editor
+
+Other Tools
+
+MSConfig এ অনেক tools আছে যেগুলো এখানে আলোচনা করা হয়নি।
+
+কিছু tools Windows Fundamentals 1 এ কভার করা হয়েছে।
+
+কিছু tools তোমার জন্য self-explore এর জন্য রাখা হয়েছে।
