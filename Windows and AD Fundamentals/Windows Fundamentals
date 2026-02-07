@@ -75,4 +75,382 @@ Advanced security policies
 
 
 
-task 2: 
+task 5: 
+1️⃣ Windows Folder কী?
+
+সাধারণত Windows থাকে:
+C:\Windows
+
+এই folder-এর ভেতরেই থাকে:
+
+Windows operating system-এর সব core ফাইল
+
+System tools
+
+Configuration ফাইল
+
+2️⃣ Windows সবসময় C drive-এ থাকে না
+
+Windows অবশ্যই C drive-এ থাকতে হবে—এমন কোনো নিয়ম নেই
+
+এটা থাকতে পারে:
+
+অন্য drive-এ (যেমন D:, E:)
+
+অন্য folder-এর ভেতরেও
+
+👉 তাই সরাসরি C:\Windows ব্যবহার করা সবসময় safe না।
+
+3️⃣ Environment Variable কেন দরকার?
+
+এই সমস্যার সমাধানের জন্যই আছে Environment Variables।
+
+Environment variable হলো:
+
+OS-এর গুরুত্বপূর্ণ তথ্য রাখার জায়গা
+
+Path, temp folder, processor info ইত্যাদি
+
+📌 Windows folder-এর system environment variable হলো:
+
+%windir%
+
+
+যেটা সবসময় Windows-এর আসল location-টা বুঝিয়ে দেয়।
+
+4️⃣ Microsoft কী বলে Environment Variable সম্পর্কে?
+
+Microsoft অনুযায়ী:
+
+Environment variables store করে:
+
+OS path
+
+Processor সংখ্যা
+
+Temporary folder location
+
+System-related info
+
+👉 এগুলো OS ও programs ঠিকভাবে কাজ করার জন্য দরকার।
+
+5️⃣ Windows folder-এর ভেতরে অনেক sub-folder থাকে
+
+Windows folder-এর মধ্যে অনেক folder থাকে
+তার মধ্যে একটা খুব গুরুত্বপূর্ণ folder হলো:
+
+📁 System32
+6️⃣ System32 folder কেন গুরুত্বপূর্ণ?
+
+System32 folder-এ থাকে:
+
+OS চালানোর জন্য সবচেয়ে গুরুত্বপূর্ণ ফাইল
+
+Core system tools (cmd, taskmgr, regedit ইত্যাদি)
+
+⚠️ ভয়ংকর সতর্কতা:
+
+ভুল করে System32-এর কিছু delete করলে:
+
+Windows পুরোপুরি নষ্ট হতে পারে
+
+OS boot নাও করতে পারে
+
+7️⃣ Windows Fundamentals সিরিজের অনেক tool System32-তে থাকে
+
+যেসব tool তুমি সামনে শিখবে (TryHackMe/Windows Fundamentals):
+
+সেগুলোর বেশিরভাগই System32 folder-এর ভেতরে থাকে
+
+
+
+
+task 6: 
+1️⃣ User account-এর ধরন
+
+Windows-এ সাধারণত ২ ধরনের local user account থাকে:
+
+Administrator
+
+Standard User
+
+2️⃣ Administrator কী করতে পারে?
+
+Administrator পারে:
+
+User add / delete
+
+Group modify
+
+System settings change
+
+Software install
+
+3️⃣ Standard User কী পারে না?
+
+Standard User:
+
+❌ System-level change করতে পারে না
+
+❌ Software install করতে পারে না
+
+✅ শুধু নিজের files/folders modify করতে পারে
+
+4️⃣ Other users দেখার উপায়
+
+Start Menu → Other users
+
+Settings → Other users
+
+Administrator হলে “Add someone else to this PC” দেখা যায়
+
+5️⃣ User profile কোথায় থাকে?
+
+সব user profile থাকে:
+
+C:\Users\
+
+
+উদাহরণ:
+
+C:\Users\Max
+
+6️⃣ প্রথমবার login করলে কী হয়?
+
+User Profile Service profile তৈরি করে
+
+Login screen-এ message দেখায়
+
+Desktop, Documents, Downloads ইত্যাদি folder তৈরি হয়
+
+7️⃣ Local User & Group Management
+
+Run → lusrmgr.msc
+
+এখানে থাকে:
+
+Users
+
+Groups
+
+User group-এ থাকলে সে group-এর permission inherit করে।
+
+
+
+
+task 7 : User Account Control
+1️⃣ বেশিরভাগ Home User = Administrator
+
+বেশিরভাগ মানুষ Windows ব্যবহার করে local administrator account দিয়ে
+
+Administrator হলে:
+
+System change করা যায়
+
+Software install করা যায়
+
+Settings modify করা যায়
+
+⚠️ সমস্যা হলো—এটা security risk।
+
+2️⃣ সব কাজের জন্য Admin privilege দরকার হয় না
+
+এই কাজগুলো করতে admin privilege দরকার নেই:
+
+Internet browsing
+
+Word / Excel-এ কাজ
+
+সাধারণ file edit
+
+তবুও user যদি সবসময় admin থাকে, তাহলে:
+
+Malware সহজে system infect করতে পারে
+
+কারণ malware user-এর permission-এই চলে
+
+3️⃣ এই ঝুঁকি কমাতে Microsoft এনেছে UAC
+
+👉 User Account Control (UAC)
+
+প্রথম আসে Windows Vista-তে
+
+তারপর থেকে সব Windows version-এ আছে
+
+📌 Note:
+
+Built-in Administrator account-এর উপর UAC defaultভাবে কাজ করে না
+
+4️⃣ UAC কীভাবে কাজ করে?
+
+যখন একজন Administrator login করে:
+
+সে defaultভাবে elevated privilege নিয়ে কাজ করে না
+
+মানে: admin হলেও সবসময় full power চালু থাকে না
+
+যখন এমন কোনো কাজ করা হয় যেটার জন্য:
+
+System-level permission দরকার
+তখন:
+
+👉 UAC prompt আসে
+👉 User-কে confirm করতে হয়:
+“তুমি কি সত্যিই এটা allow করতে চাও?”
+
+5️⃣ Program Properties → Security tab
+
+Built-in administrator দিয়ে:
+
+Program-এর Properties → Security tab
+
+সেখানে দেখা যায়:
+
+কোন user/group এই file চালাতে পারে
+
+Standard user এখানে listed না
+
+মানে:
+
+Standard user নিজে নিজে program install করতে পারবে না
+
+6️⃣ Standard user দিয়ে install করতে গেলে কী হয়?
+
+Standard user দিয়ে login করে
+
+Program install করতে গেলে:
+
+Icon-এর উপর shield চিহ্ন দেখা যায় 🛡️
+
+🔍 এই shield মানে:
+
+“এই কাজের জন্য admin permission লাগবে”
+
+7️⃣ UAC prompt কী করে?
+
+Program double-click করলে:
+
+UAC prompt আসে
+
+Built-in administrator account দেখায়
+
+Admin password চায়
+
+যদি:
+
+Password না দেওয়া হয়
+
+কিছুক্ষণ অপেক্ষা করা হয়
+
+👉 Prompt চলে যায়
+👉 Program install হয় না
+
+8️⃣ এর ফল কী?
+
+Malware নিজে নিজে install হতে পারে না
+
+User unknowingly system damage করতে পারে না
+
+System compromise-এর সম্ভাবনা কমে যায়
+
+🔑 এক লাইনের সারাংশ (Exam-style)
+
+UAC administrator-কে সবসময় elevated privilege দেয় না
+
+System-level কাজ করলে confirmation চায়
+
+Shield icon মানে UAC prompt আসবে
+
+
+
+
+
+
+task 8 :Settings and the Control Panel
+1️⃣ মূল জায়গা যেখানে system পরিবর্তন করা হয়
+
+Windows-এ system change করার primary locations:
+
+Settings menu
+
+Control Panel
+
+2️⃣ Control Panel
+
+বহু বছর ধরে primary system change location
+
+ব্যবহার হয়:
+
+Printer add করা
+
+Programs uninstall করা
+
+Advanced system settings change করা
+
+Classic interface
+
+Complex / detailed configuration এর জন্য সবচেয়ে উপযুক্ত
+
+3️⃣ Settings menu
+
+Introduced: Windows 8
+
+প্রথম Windows যা touch screen tablets support করেছিল
+
+এখনও আছে Windows 10 / 11-এ
+
+User-friendly interface
+
+Primary location for common changes (user preference)
+
+4️⃣ Control Panel এবং Settings-এর মিল ও পার্থক্য
+
+Mil: দুইটাতে system settings পরিবর্তন করা যায়
+
+Difference:
+
+Settings → modern, touch-friendly, simple changes
+
+Control Panel → legacy, advanced changes, more detailed
+
+কিছু cases-এ: Settings → Control Panel
+
+উদাহরণ:
+
+Settings → Network & Internet → Change adapter options → opens Control Panel window
+
+5️⃣ Programs / Installed applications দেখা
+
+Control Panel → Programs → Programs and Features
+
+দেখা যায়:
+
+Installed apps নাম, publisher, version
+
+Verification করতে সাহায্য করে যে কোন software install করা আছে
+
+6️⃣ Start Menu থেকে access
+
+Settings এবং Control Panel উভয়ই Start Menu থেকে access করা যায়
+
+Search ব্যবহার করে নির্দিষ্ট setting খুঁজে পাওয়া যায়
+
+উদাহরণ: “wallpaper” search → Best match → Settings window খোলা যায়
+
+7️⃣ Key point
+
+Settings → general / simple changes
+
+Control Panel → complex / advanced changes
+
+প্রয়োজনে Start Menu search ব্যবহার করে সঠিক window খুঁজে নেওয়া সবচেয়ে সহজ
+
+
+
+
+
+
+
+
+task 9 : Task Manager
+task manager shurtcut : Ctrl + Shift + Esc
