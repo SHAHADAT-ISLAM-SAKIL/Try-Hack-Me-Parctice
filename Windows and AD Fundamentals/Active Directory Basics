@@ -1,0 +1,1266 @@
+task  1 : Introduction 
+1️⃣ এই কনটেন্টটা কী বলছে? (সহজ বাংলায়)
+🔐 Active Directory (AD) কী?
+
+Microsoft Active Directory হলো corporate environment-এ:
+
+User, Computer, Printer, Policy—সবকিছু centralized ভাবে manage করার system।
+
+বড় অফিস/কোম্পানিতে login, access control, permissions—সব AD দিয়ে হয়।
+
+🌐 Active Directory Domain কী?
+
+Domain = একসাথে যুক্ত করা users + computers-এর একটা logical group
+
+যেমন: company.local
+
+Domain থাকলে:
+
+একবার login করলেই সব resource access
+
+Admin centrally control করতে পারে
+
+🧱 AD Domain-এর মূল components
+
+Domain Controller (DC) → AD চালায়
+
+Users → employees
+
+Computers → company PCs
+
+Groups → permission management
+
+Group Policy (GPO) → rules (USB block, password policy ইত্যাদি)
+
+🌲 Forest & Domain Trust
+
+Forest = সবচেয়ে বড় AD structure
+
+একাধিক domain থাকতে পারে এক forest-এ
+
+Trust থাকলে:
+
+এক domain-এর user অন্য domain-এর resource access করতে পারে
+
+🎯 এই room-এর উদ্দেশ্য
+
+এই TryHackMe room শেষ করলে তুমি বুঝবে:
+
+AD কী
+
+Domain কী
+
+AD-এর structure
+
+Trust কীভাবে কাজ করে
+
+👉 এটা Blue Team + SOC + System Admin + Cybersecurity beginner—সবার জন্য super important।
+
+2️⃣ “There was a problem, please try again later” — কেন আসছে?
+
+এই errorটা TryHackMe platform issue, তোমার fault না।
+
+সাধারণ কারণ
+
+Server temporary issue
+
+Internet hiccup
+
+Browser cache problem
+
+Login session expire
+
+🛠️ Fix করার উপায় (এক এক করে try করো)
+✅ Quick fixes
+
+1️⃣ Page refresh (F5)
+2️⃣ Logout → Login আবার
+3️⃣ Incognito / Private tab দিয়ে খুলে দেখো
+4️⃣ Browser change করো (Chrome ↔ Firefox)
+
+✅ Network fixes
+
+5️⃣ Internet change করো (WiFi ↔ Mobile hotspot)
+6️⃣ VPN থাকলে off করে দেখো
+
+✅ Last option
+
+7️⃣ ১০–২০ মিনিট পর আবার try করো
+(অনেক সময় TryHackMe server issue নিজে নিজেই ঠিক হয়)
+
+🧠 Important note
+
+এই room:
+
+No VM দরকার নাই শুরুতে
+
+Pure learning room
+
+Error থাকলেও progress lose হবে না
+
+Bottom line
+
+✔️ কনটেন্টটা Active Directory fundamentals শেখানোর জন্য
+✔️ Errorটা temporary platform issue
+✔️ তুমি ঠিক জায়গায়ই শিখছো 👍
+
+
+
+
+
+
+
+task 2 : 
+ছোট নেটওয়ার্ক vs বড় নেটওয়ার্ক
+🔹 ছোট অফিস (৫টা কম্পিউটার, ৫ জন মানুষ)
+
+প্রতিটা কম্পিউটার আলাদা আলাদা করে সেটআপ করা যায়
+
+নিজে গিয়ে user বানানো, setting change করা সহজ
+
+সমস্যা হলে সরাসরি গিয়ে ঠিক করা যায়
+
+👉 এই অবস্থায় Active Directory দরকার পড়ে না
+
+🔹 বড় অফিস (১৫৭টা কম্পিউটার, ৩২০ জন user, ৪টা অফিস)
+
+এখানে সমস্যা শুরু হয় 👇
+
+প্রতিটা কম্পিউটার আলাদা করে manage করা অসম্ভব
+
+প্রতিটা user-এর policy আলাদা করে সেট করা কঠিন
+
+সবাইকে on-site support দেওয়া প্রায় অসম্ভব
+
+👉 এখানেই দরকার হয় Windows Domain + Active Directory
+
+🏢 Windows Domain কী?
+
+Windows Domain =
+একটা কোম্পানির সব user + computer একসাথে এক জায়গা থেকে manage করার system।
+
+এই management করা হয় একটা central জায়গা থেকে, যার নাম 👉 Active Directory (AD)
+
+🗄️ Active Directory (AD)
+
+Active Directory হলো:
+
+সব user account
+
+সব computer
+
+সব policy
+
+সব permission
+
+👉 এগুলোর central database
+
+🖥️ Domain Controller (DC)
+
+যে server:
+
+Active Directory চালায়
+
+Login verify করে
+
+Policy apply করে
+
+তাকে বলে 👉 Domain Controller (DC)
+
+✅ Windows Domain ব্যবহারের সুবিধা
+1️⃣ Centralised Identity Management
+
+এক জায়গা থেকে সব user manage
+
+নতুন employee = একবার user create করলেই সব জায়গায় valid
+
+2️⃣ Security Policy Management
+
+Password policy
+
+USB block
+
+Control Panel access block
+
+Software restriction
+
+👉 এক policy → পুরো network-এ apply
+
+🎓 Real-world Example (School / University)
+
+তুমি সম্ভবত আগেও ব্যবহার করেছো:
+
+একই username/password
+
+যেকোনো lab computer-এ login করা যায়
+
+Control Panel access নাই
+
+Software install করতে পারো না
+
+👉 এগুলো সব Active Directory + Group Policy দিয়ে করা
+
+🏢 Welcome to THM Inc. (এই ল্যাবের গল্প)
+
+এখন তুমি হচ্ছো:
+👉 THM Inc.-এর নতুন IT Admin
+
+তোমার দায়িত্ব:
+
+Domain: THM.local
+
+Domain Controller আগে থেকেই setup করা
+
+তোমার কাছে Administrator access আছে
+
+🔑 Login Information (RDP)
+
+যদি RDP দিয়ে connect করো:
+
+Username: THM\Administrator
+
+Password: Password321
+
+IP: MACHINE_IP
+
+⚠️ THM\Administrator লেখা জরুরি
+না হলে domain user হিসেবে login হবে না
+
+🧪 এই Task-এ কী করতে হবে?
+
+Start Machine ক্লিক করতে হবে
+
+Browser বা RDP দিয়ে DC-তে ঢুকবে
+
+পরের task-গুলোতে:
+
+AD user
+
+Computer
+
+Group
+
+Policy
+এসব configure করবে
+
+সংক্ষেপে এক লাইনে
+
+👉 বড় network manage করার জন্য Windows Domain + Active Directory অপরিহার্য, আর এই ল্যাবে তুমি হাতে-কলমে সেটাই শিখছো 💪
+
+
+
+
+
+
+
+
+task 3 : Active Directory Domain Service (AD DS)
+AD DS হলো Windows Domain–এর মূল অংশ।
+এটা একটা central catalogue / database, যেখানে নেটওয়ার্কের সব object-এর তথ্য থাকে।
+
+👉 AD–এর object হতে পারে:
+
+Users
+
+Computers (Machines)
+
+Groups
+
+Printers
+
+Shared folders
+
+আরও অনেক কিছু
+
+👤 Users (User Account)
+
+Users হলো সবচেয়ে common AD object।
+
+Users কী করতে পারে?
+
+Domain–এ authenticate (login) করতে পারে
+
+File, printer, resource access পায়
+
+👉 এজন্য user-কে বলা হয় Security Principal
+(Security Principal = যে object resource-এর ওপর action নিতে পারে)
+
+User দুই ধরনের হয়
+
+1️⃣ People users
+
+Employee, staff, admin
+
+2️⃣ Service users
+
+IIS, MSSQL, backup service ইত্যাদি
+
+Limited permission থাকে
+
+শুধু service চালানোর জন্য
+
+🖥️ Machines (Computer Accounts)
+
+যখন কোনো computer:
+👉 Domain–এ join করে
+👉 তখন AD–তে একটা Machine account তৈরি হয়
+
+Machine account-এর বৈশিষ্ট্য
+
+এটাও Security Principal
+
+Limited permission থাকে
+
+Local machine-এর local administrator
+
+সাধারণত মানুষ ব্যবহার করে না
+
+🔐 Machine password
+
+Automatically rotate হয়
+
+প্রায় 120 characters random
+
+🏷️ Machine account নাম কীভাবে চেনা যাবে?
+
+👉 Computer name + $
+
+উদাহরণ:
+
+Computer name: DC01
+
+Machine account: DC01$
+
+👥 Security Groups
+
+Group ব্যবহার করা হয়:
+👉 একসাথে অনেক user / computer-কে permission দিতে
+
+কেন group দরকার?
+
+আলাদা আলাদা user-কে permission না দিয়ে
+
+group-এ user যোগ করলেই permission পাওয়া যায়
+
+Group-এর member হতে পারে
+
+Users
+
+Computers
+
+অন্য Groups
+
+🛡️ গুরুত্বপূর্ণ Default Security Groups
+Group Name	কাজ
+Domain Admins	পুরো domain control
+Server Operators	DC manage করতে পারে
+Backup Operators	সব file access করতে পারে
+Account Operators	User create/modify
+Domain Users	সব normal user
+Domain Computers	সব computer
+Domain Controllers	সব DC
+
+👉 সবচেয়ে powerful group = Domain Admins
+
+🧰 Active Directory Users and Computers (ADUC)
+
+এটা হলো:
+👉 AD manage করার main GUI tool
+
+এখান থেকে তুমি করতে পারো:
+
+User create / delete
+
+Password reset
+
+Group manage
+
+Computer move
+
+🗂️ Organizational Units (OU)
+
+OU হলো:
+👉 AD–এর ভিতরের container
+
+OU কেন দরকার?
+
+Policy apply করার জন্য
+
+Department অনুযায়ী user/computer ভাগ করতে
+
+উদাহরণ:
+
+IT
+
+Sales
+
+HR
+
+Management
+
+👉 একজন user একটাই OU–তে থাকতে পারে
+
+📦 Default Containers (Windows নিজে বানায়)
+
+Builtin → default groups
+
+Computers → new joined computers
+
+Domain Controllers → DC গুলো
+
+Users → default users/groups
+
+Managed Service Accounts → service accounts
+
+🆚 Security Groups vs OU (খুব important)
+OU:
+
+Policy apply করার জন্য
+
+User/Computer → only one OU
+
+Security Group:
+
+Permission দেওয়ার জন্য
+
+User → multiple groups
+
+👉 Policy = OU
+👉 Permission = Group
+
+❓ এখন Question–Answer অংশ (খেয়াল করো এখানে 👇)
+✅ Q1
+
+Which group normally administrates all computers and resources in a domain?
+✔️ Answer: Domain Admins (Correct)
+
+❌ Q2 (এখানে ভুল দেখছো)
+
+What would be the name of the machine account associated with a machine named TOM-PC?
+
+তুমি দেখছো:
+
+DC01$__
+
+
+❌ এটা ভুল
+
+✔️ Correct Answer হবে:
+
+TOM-PC$
+
+
+👉 Rule মনে রাখো:
+
+Computer name + $
+
+✅ Q3
+
+Which container should be used to group users for consistent policies?
+✔️ Answer: Organizational Units (OU) (Correct)
+
+🧠 এক লাইনে মনে রাখার টেকনিক
+
+User / Computer = Object
+
+Policy = OU
+
+Permission = Group
+
+Domain control = Domain Admins
+
+Machine account = ComputerName$
+
+
+
+
+
+
+
+task 4 :
+)
+
+🔰 এই টাস্কে আসলে কী করানো হচ্ছে?
+
+তুমি এখন THM domain-এর নতুন Domain Admin।
+তোমার কাজ তিনটা বড় ভাগে ভাগ করা যায়:
+
+1️⃣ Extra OU delete করা
+সমস্যা
+
+AD–তে একটা department OU আছে
+
+কিন্তু Organisational chart–এ নেই
+
+বলা হয়েছে: department বন্ধ → OU delete করতে হবে
+
+কিন্তু সরাসরি delete হচ্ছে না কেন?
+
+কারণ:
+👉 By default OU গুলো “Protected from accidental deletion” থাকে
+
+সমাধান
+
+AD Users and Computers
+
+View → ✅ Advanced Features
+
+OU → Right click → Properties
+
+Object tab
+
+❌ “Protect object from accidental deletion” untick
+
+OK → OU delete
+
+👉 OU delete করলে তার ভিতরের user / group সব delete হয়
+
+2️⃣ Users ঠিক করা (Create / Delete)
+
+Chart অনুযায়ী:
+
+কিছু user missing
+
+কিছু user extra
+
+তাই:
+
+প্রয়োজন অনুযায়ী user create
+
+অপ্রয়োজনীয় user delete
+
+👉 উদ্দেশ্য: AD = Organisational chart match করা
+
+3️⃣ Delegation (সবচেয়ে গুরুত্বপূর্ণ অংশ 🔥)
+Delegation কী?
+
+👉 Domain Admin না বানিয়েই
+👉 কোনো user-কে নির্দিষ্ট কাজের permission দেওয়া
+
+এটাই real corporate practice 💼
+
+এখানে কী করা হয়েছে?
+
+Phillip = IT Support lead
+
+তাকে দিতে হবে:
+
+Sales
+
+Marketing
+
+Management
+👉 এই OUs–এর user password reset করার ক্ষমতা
+
+Delegation কীভাবে করা হয়?
+
+OU (Sales) → Right click
+
+Delegate Control
+
+User: phillip (Check Names)
+
+Task:
+
+✅ Reset user passwords and force password change at next logon
+
+Finish
+
+👉 এখন Phillip Domain Admin না হয়েও password reset করতে পারে
+
+4️⃣ Phillip দিয়ে Password Reset Test
+
+Phillip:
+
+ADUC খুলতে পারে না ❌
+
+তাই ব্যবহার করা হয়েছে PowerShell
+
+Password reset command
+Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose
+
+Force password change at next logon
+Set-ADUser -ChangePasswordAtLogon $true -Identity sophie -Verbose
+
+5️⃣ Sophie দিয়ে Login করে Flag নেওয়া
+
+User: THM\sophie
+
+Desktop-এ flag পাওয়া গেছে ✅
+
+👉 THM{thanks_for_contacting_support}
+
+❓ এখন শেষ প্রশ্নটা 👇
+Question:
+
+The process of granting privileges to a user over some OU or other AD Object is called…
+
+✅ Correct Answer:
+👉 Delegation
+🧠 এক লাইনে মনে রাখার ট্রিক
+
+OU delete protection → Advanced Features
+
+Helpdesk power → Delegation
+
+Limited permission without Domain Admin → Delegation
+
+Password reset power → Delegation
+
+
+
+
+
+
+
+
+task  5 :
+🖥️ AD-তে Computers Manage করার মূল আইডিয়া
+ডিফল্ট অবস্থা
+
+Domain-এ নতুন computer join করলে
+👉 সব চলে যায় Computers container-এ
+(DC ছাড়া)
+
+সমস্যা:
+
+Server + Laptop + PC সব একসাথে
+
+আলাদা policy দেওয়া কঠিন
+
+✅ Best Practice: Device অনুযায়ী OU
+
+তাই আমরা বানাই 👇
+
+1️⃣ Workstations OU
+
+User-দের PC
+
+Laptop
+
+Daily work device
+
+Never admin login
+
+2️⃣ Servers OU
+
+File server
+
+Web server
+
+Application server
+
+3️⃣ Domain Controllers OU
+
+Windows নিজেই বানায়
+
+সবচেয়ে sensitive
+
+🗂️ এই ল্যাবে কী করতে বলা হয়েছে?
+Step 1: OU বানাও
+
+thm.local এর নিচে:
+
+Workstations
+
+Servers
+
+(Domain Controllers আগেই আছে)
+
+Step 2: Computers container থেকে move করো
+
+PC + Laptop → Workstations OU
+
+Server → Servers OU
+
+👉 Drag & drop করলেই হবে
+
+❓ এখন Question টা কীভাবে solve করবে?
+Question:
+
+After organising the available computers, how many ended up in the Workstations OU?
+
+✅ উত্তর বের করার exact উপায়
+
+Active Directory Users and Computers
+
+Workstations OU ক্লিক করো
+
+ভিতরে যতগুলো computer object দেখছো
+👉 সেগুলো গুনে ফেলো
+
+ওটাই answer ✔️
+
+⚠️ কেন আমি সরাসরি number বলছি না?
+
+কারণ:
+
+TryHackMe machine reset হলে
+
+Computer count কখনো একটু এদিক-সেদিক হতে পারে
+
+👉 তুমি নিজে count করলে 100% correct হবে
+
+🧠 Tip (Exam + Real life)
+
+OU = policy
+
+Group = permission
+
+Computer OU separation = security
+
+
+
+
+
+
+
+task 6 : Group Policy (GPO)
+🔐 Group Policy (GPO) আসলে কী?
+
+Group Policy Object (GPO) =
+এক সেট নিয়ম (settings), যেগুলো দিয়ে আমরা ঠিক করি:
+
+👤 User কী করতে পারবে / পারবে না
+
+💻 Computer কীভাবে behave করবে
+
+👉 এই policy গুলো আমরা OU (Organizational Unit) এর উপর apply করি।
+
+🧠 কেন OU বানানো হয়েছিল?
+
+আগে আমরা:
+
+Users → আলাদা OU
+
+Computers → Workstations / Servers
+
+এখন কারণটা clear:
+👉 Different OU = Different Policy
+
+🧰 Group Policy Management Tool
+
+খুলতে গেলে:
+
+Start Menu → Group Policy Management
+
+এখানে তুমি দেখবে:
+
+OU hierarchy
+
+Group Policy Objects
+
+📌 Default GPO গুলো
+
+সাধারণত থাকে:
+
+Default Domain Policy
+
+পুরো domain-এ apply হয়
+
+Password policy, lockout policy থাকে
+
+Default Domain Controllers Policy
+
+শুধু Domain Controllers OU-তে
+
+অন্য custom GPO (যেমন RDP Policy)
+
+📌 মনে রাখবে:
+
+Parent OU-তে লাগানো GPO → child OU-তেও apply হয়
+
+🔑 Password Policy Example
+
+Path:
+
+Computer Configuration
+→ Policies
+→ Windows Settings
+→ Security Settings
+→ Account Policies
+→ Password Policy
+
+
+Example:
+
+Minimum password length = 10
+
+👉 Domain-এ সবাইকে affect করবে
+
+📡 GPO কিভাবে কাজ করে?
+
+GPO গুলো থাকে SYSVOL share-এ
+
+Path:
+
+C:\Windows\SYSVOL\sysvol\
+
+
+⏳ Update হতে সময় লাগতে পারে (up to 2 hours)
+
+⚡ Force করতে:
+
+gpupdate /force
+
+🧪 THM Task: 2টা GPO বানানো
+🛑 1️⃣ Control Panel Access Restrict করা
+
+🎯 Goal:
+
+IT ছাড়া কেউ Control Panel খুলতে পারবে না
+
+🔧 GPO Name:
+
+Restrict Control Panel Access
+
+📍 Policy Path:
+User Configuration
+→ Policies
+→ Administrative Templates
+→ Control Panel
+→ Prohibit access to Control Panel and PC settings
+
+
+👉 Policy: Enabled
+
+🔗 Link করতে হবে:
+
+Sales OU
+
+Marketing OU
+
+Management OU
+
+❌ IT OU-তে link করবে না
+
+🔒 2️⃣ Auto Lock Screen (5 minutes)
+
+🎯 Goal:
+
+5 মিনিট inactive থাকলে screen lock
+
+🔧 GPO Name:
+
+Auto Lock Screen
+
+📍 Policy Path:
+Computer Configuration
+→ Policies
+→ Windows Settings
+→ Security Settings
+→ Local Policies
+→ Security Options
+→ Interactive logon: Machine inactivity limit
+
+
+⏱️ Value: 300 seconds (5 minutes)
+
+🔗 Link কোথায়?
+
+Root domain (thm.local)
+
+📌 কারণ:
+
+Workstations, Servers, Domain Controllers — সবাই child OU
+
+🧪 Verification (Test)
+
+Login as:
+
+Username: THM\Mark
+Password: M4rk3t1ng.21
+
+
+Expected:
+
+❌ Control Panel খুলবে না
+
+🔒 5 মিনিট পরে screen lock হবে
+
+📝 Exam / Interview Gold Notes
+
+OU = Policy boundary
+
+User Configuration → User behaviour
+
+Computer Configuration → Machine behaviour
+
+GPO inheritance → Parent → Child
+
+SYSVOL = GPO distribution
+
+gpupdate /force = instant apply
+
+
+
+
+
+
+
+
+task 7 : Authentication Methods in Windows Domain
+🔐 Authentication Methods in Windows Domain
+
+Windows Domain-এ সব user credentials থাকে Domain Controller (DC) এ।
+User যখন কোনো service (file share, website, DB ইত্যাদি) access করতে চায় → DC verify করে।
+
+Windows-এ মূলত ২টা authentication protocol আছে:
+
+Protocol	Status
+Kerberos	✅ Default (modern Windows)
+NetNTLM	⚠️ Legacy (compatibility)
+🟢 Kerberos Authentication (Default)
+
+👉 Ticket-based authentication system
+
+User বারবার password পাঠায় না, বরং tickets ব্যবহার করে।
+
+🎟️ Kerberos Tickets
+Ticket	কাজ
+TGT (Ticket Granting Ticket)	অন্য ticket (TGS) চাইতে ব্যবহার হয়
+TGS (Ticket Granting Service)	নির্দিষ্ট service access করার জন্য
+🔁 Kerberos Authentication Flow (3 Steps)
+🔹 Step 1: Login → TGT পাওয়া
+
+User পাঠায়:
+
+Username
+
+Timestamp
+
+🔐 Encrypted (password থেকে তৈরি key দিয়ে)
+
+📍 পাঠানো হয় → KDC (Domain Controller)
+
+KDC দেয়:
+
+🎫 TGT
+
+🔑 Session Key
+
+📌 Important:
+
+TGT encrypted থাকে krbtgt account hash দিয়ে
+
+User TGT পড়তে পারে না
+
+Session Key TGT-র ভেতরেই থাকে
+
+🔹 Step 2: Service Access → TGS পাওয়া
+
+User চায় ধরো:
+
+File Share
+
+Website
+
+Database
+
+User পাঠায় KDC-কে:
+
+Username + Timestamp (Session Key দিয়ে encrypted)
+
+🎫 TGT
+
+🏷️ SPN (Service Principal Name)
+
+KDC ফেরত দেয়:
+
+🎫 TGS
+
+🔑 Service Session Key
+
+📌 TGS encrypted থাকে:
+
+Service owner account hash দিয়ে
+
+🔹 Step 3: Service Authentication
+
+User পাঠায়:
+
+TGS → Service-এ
+
+Service করে:
+
+নিজের account hash দিয়ে TGS decrypt
+
+Service Session Key verify
+
+✅ Access দেয়
+
+🧠 Kerberos One-Line Summary (Exam Gold)
+
+Kerberos uses tickets (TGT → TGS) to authenticate users without sending passwords over the network
+
+🔴 NetNTLM Authentication (Legacy)
+
+👉 Challenge–Response based
+
+এখনও অনেক জায়গায় enabled থাকে compatibility এর জন্য।
+
+🔁 NetNTLM Flow
+
+1️⃣ Client → Server
+
+“আমি authenticate করতে চাই”
+
+2️⃣ Server → Client
+
+🎲 Random Challenge পাঠায়
+
+3️⃣ Client:
+
+NTLM password hash + challenge combine করে
+
+🔐 Response বানিয়ে পাঠায়
+
+4️⃣ Server → DC
+
+Challenge + Response forward করে
+
+5️⃣ DC:
+
+নিজের কাছে থাকা hash দিয়ে response regenerate করে
+
+Compare করে
+
+6️⃣ Result:
+
+✅ Match → Authenticated
+
+❌ No match → Denied
+
+📌 Password বা hash কখনো network-এ যায় না
+
+🏠 Local Account হলে?
+
+Server নিজেই verify করতে পারে
+
+DC লাগবে না
+
+কারণ hash local SAM-এ থাকে
+
+📘 Exam / THM Answer Recap
+❓ Will a current version of Windows use NetNTLM by default?
+
+Answer: ❌ nay
+
+❓ Which Kerberos ticket allows requesting further tickets (TGS)?
+
+Answer: 🎫 Ticket Granting Ticket (TGT)
+
+❓ Is the user's password transmitted over the network in NetNTLM?
+
+Answer: ❌ nay
+
+🔐 Kerberos vs NetNTLM (Super Short)
+Feature	Kerberos	NetNTLM
+Default	✅ Yes	❌ No
+Ticket based	✅ Yes	❌ No
+Password sent	❌ Never	❌ Never
+Secure	🔒 High	⚠️ Lower
+Attacks	Golden/Silver Ticket	Relay, Hash cracking
+
+এখন পরের টপিক Trees, Forests & Trusts আসছে —
+ওটা AD-র hierarchy বোঝার জন্য খুব important 🌲🌳
+
+
+
+
+
+task 8 : trees, forest and trusts :
+🌳 Trees, Forests & Trusts (Active Directory)
+
+এখন পর্যন্ত আমরা ধরেছি—
+👉 একটা কোম্পানি = একটা Domain
+
+কিন্তু বাস্তবে কোম্পানি বড় হলে একটা domain যথেষ্ট না।
+
+🟦 Single Domain (Recap)
+
+একটাই domain (যেমন: thm.local)
+
+এক সেট:
+
+Users
+
+Computers
+
+GPOs
+
+Domain Admins
+
+ছোট / নতুন কোম্পানির জন্য perfect
+
+🌲 Trees (Same Namespace)
+📌 Tree কী?
+
+একই namespace (domain name) শেয়ার করা একাধিক domain-এর group
+
+🧠 Real Example
+
+Company expand করলো ২টা দেশে:
+
+UK
+
+US
+
+তখন structure হতে পারে:
+
+thm.local        (root domain)
+ ├── uk.thm.local
+ └── us.thm.local
+
+
+📌 সব domain:
+
+আলাদা আলাদা AD
+
+আলাদা DC
+
+আলাদা users, computers, GPOs
+
+কিন্তু—
+
+একই namespace → thm.local
+
+➡️ এটাকেই বলে Tree
+
+🔐 Why Trees are useful?
+
+UK IT team → শুধু UK domain manage করবে
+
+US IT team → শুধু US domain manage করবে
+
+একে অপরের উপর control নেই
+
+Policies আলাদা রাখা যায়
+
+Human error কমে
+
+👑 Enterprise Admins
+
+Trees এ নতুন একটা powerful group আসে:
+
+Group	Power
+Domain Admins	শুধু নিজের domain
+Enterprise Admins	🔥 সব domain (পুরো tree/forest)
+
+⚠️ Enterprise Admin compromise = entire forest compromise
+
+🌳 Forests (Different Namespace)
+📌 Forest কী?
+
+একাধিক Tree, যাদের namespace আলাদা
+
+🧠 Real Example
+
+THM Inc আর MHT Inc merge করলো:
+
+Forest
+ ├── thm.local
+ │    ├── uk.thm.local
+ │    └── us.thm.local
+ │
+ └── mht.com
+      ├── asia.mht.com
+      └── eu.mht.com
+
+
+📌 এখানে:
+
+thm.local → ১টা Tree
+
+mht.com → আরেকটা Tree
+
+Namespace আলাদা
+
+সব মিলিয়ে = Forest
+
+🔐 Forest Features
+
+Centralised trust model
+
+Global Catalog
+
+Shared schema
+
+Enterprise Admins control everything
+
+🔗 Trust Relationships
+❓ Trust কেন দরকার?
+
+User যদি:
+
+THM UK domain-এ থাকে
+
+কিন্তু file দরকার MHT EU server থেকে
+
+👉 তখন দরকার Trust
+
+📌 Trust কী?
+
+একটা domain অন্য domain-এর users কে trust করে resource access দিতে পারবে
+
+➡️ One-Way Trust
+Example:
+
+Domain A trusts Domain B
+
+✔️ Domain B user → Domain A resource access করতে পারবে
+❌ Domain A user → Domain B access করতে পারবে না
+
+📌 Trust direction ≠ Access direction
+
+🔄 Two-Way Trust
+
+দুই domain একে অপরকে trust করে
+
+দুদিকেই access সম্ভব
+
+📌 Defaultভাবে:
+
+Tree domains → two-way trust
+
+Forest domains → two-way trust
+
+⚠️ Important Note
+
+Trust থাকলেই:
+❌ সব resource access পাওয়া যায় না
+
+Trust মানে:
+✔️ authorization possible
+
+Actual access:
+👉 permissions দিয়ে আলাদা করে দিতে হয়
+
+🧠 Exam / THM Answer Recap
+❓ Group of Windows domains sharing same namespace?
+
+Answer: 🌲 Tree
+
+❓ User in Domain A access Domain B resource—what’s needed?
+
+Answer: 🔗 Trust Relationship
+
+🧩 One-Page Memory Trick
+OU     → Policy grouping
+Group  → Permission grouping
+
+Domain → Security boundary
+Tree   → Same namespace
+Forest → Different namespaces
+
+Trust  → Cross-domain access
+
+🔐 Offensive Security Hint (future rooms)
+
+Forest trust abuse
+
+Kerberos referral tickets
+
+Enterprise Admin = game over
+
+Trust exploitation = lateral movement
