@@ -1,0 +1,383 @@
+# ⚡ TryHackMe — Windows PowerShell Notes
+
+These notes summarize the **Windows PowerShell | TryHackMe Cyber Security 101** room.
+It covers PowerShell basics, navigation, data filtering, system enumeration, and scripting for cybersecurity.
+
+---
+
+# 📌 1. Introduction to PowerShell
+
+## ✅ What is PowerShell?
+
+* Cross-platform task automation solution by Microsoft
+* Includes:
+
+  * Command-line shell
+  * Scripting language
+  * Configuration management framework
+* Built on **.NET Framework**
+* Object-oriented → returns structured objects instead of text
+* Works on **Windows, Linux, macOS**
+
+---
+
+## 🕰️ History
+
+* Early 2000s → Developed by Microsoft engineer Jeffrey Snow
+* Released in **2006**
+* Designed to replace limitations of cmd.exe & batch scripting
+* **PowerShell Core (2016)** → Open-source & cross-platform
+
+---
+
+## ⭐ Why PowerShell is Powerful
+
+👉 Commands return **objects with properties & methods**
+➡️ Enables advanced filtering, automation & system interaction
+
+---
+
+# 🧩 2. PowerShell Basics
+
+---
+
+## 🚀 Launching PowerShell
+
+You can open PowerShell from:
+
+* Start Menu
+* Run dialog
+* File Explorer
+* Task Manager
+* cmd.exe
+
+👉 Prompt starts with:
+
+```
+PS C:\>
+```
+
+---
+
+## 🔤 Command Syntax (Verb-Noun)
+
+PowerShell commands follow:
+
+```
+Verb-Noun
+```
+
+| Example      | Meaning          |
+| ------------ | ---------------- |
+| Get-Content  | Read file        |
+| Set-Location | Change directory |
+| Remove-Item  | Delete file      |
+
+---
+
+## 🛠️ Essential Commandlets
+
+---
+
+### ✅ Get-Command
+
+```powershell
+Get-Command
+```
+
+👉 Lists all available commands
+
+---
+
+### ✅ Get-Help
+
+```powershell
+Get-Help Get-Process
+Get-Help Get-Process -Examples
+```
+
+👉 Shows syntax, usage & examples
+
+---
+
+### ✅ Get-Alias
+
+```powershell
+Get-Alias
+```
+
+👉 Shows shortcuts like:
+
+* `dir` → Get-ChildItem
+* `cd` → Set-Location
+
+---
+
+# 📦 3. Extending PowerShell
+
+---
+
+### ✅ Find-Module
+
+```powershell
+Find-Module *network*
+```
+
+👉 Searches PowerShell Gallery
+
+---
+
+### ✅ Install-Module
+
+```powershell
+Install-Module ModuleName
+```
+
+👉 Installs additional command modules
+
+---
+
+# 📁 4. File System Navigation
+
+---
+
+## 📂 Navigation
+
+| Command       | Meaning               |
+| ------------- | --------------------- |
+| Get-ChildItem | List files (dir / ls) |
+| Set-Location  | Change directory (cd) |
+
+---
+
+## 🆕 File & Directory Management
+
+---
+
+### ✅ New-Item
+
+```powershell
+New-Item test.txt -ItemType File
+```
+
+---
+
+### ✅ Remove-Item
+
+```powershell
+Remove-Item test.txt
+```
+
+👉 Deletes file or folder
+
+---
+
+### ✅ Copy & Move
+
+```powershell
+Copy-Item a.txt b.txt
+Move-Item a.txt C:\Temp
+```
+
+---
+
+### ✅ Read File
+
+```powershell
+Get-Content file.txt
+```
+
+👉 Equivalent to cat / type
+
+---
+
+# 🔎 5. Piping, Filtering & Searching
+
+---
+
+## 🔗 Piping
+
+```powershell
+Get-Process | Select-Object Name
+```
+
+👉 Passes objects between commands
+
+---
+
+## 🎯 Filtering (Where-Object)
+
+```powershell
+Get-Process | Where-Object {$_.CPU -GT 100}
+```
+
+### Operators
+
+| Operator | Meaning       |
+| -------- | ------------- |
+| -EQ      | Equal         |
+| -NE      | Not equal     |
+| -GT      | Greater       |
+| -LT      | Less          |
+| -Like    | Pattern match |
+
+---
+
+## 🎛️ Selecting (Select-Object)
+
+```powershell
+Get-Process | Select-Object Name, CPU
+```
+
+---
+
+## 🔍 Searching (Select-String)
+
+```powershell
+Select-String "error" logfile.txt
+```
+
+👉 Similar to grep / findstr
+👉 Supports Regex
+
+---
+
+# 💻 6. System & Network Enumeration
+
+---
+
+## 🖥️ System Info
+
+```powershell
+Get-ComputerInfo
+```
+
+---
+
+## 👤 User Enumeration
+
+```powershell
+Get-LocalUser
+```
+
+---
+
+## 🌐 Network Info
+
+```powershell
+Get-NetIPConfiguration
+Get-NetIPAddress
+```
+
+---
+
+## 🔐 File Integrity
+
+```powershell
+Get-FileHash malware.exe
+```
+
+👉 Used in malware analysis & integrity verification
+
+---
+
+# 📊 7. Real-Time System Analysis
+
+---
+
+## ⚙️ Processes
+
+```powershell
+Get-Process
+```
+
+---
+
+## 🔌 Services
+
+```powershell
+Get-Service
+```
+
+---
+
+## 🌐 Network Connections
+
+```powershell
+Get-NetTCPConnection
+```
+
+👉 Useful in incident response
+
+---
+
+# 📜 8. PowerShell Scripting
+
+---
+
+## 🧠 What is Scripting?
+
+👉 Automating tasks using command sequences in `.ps1` files
+
+---
+
+## 🎯 Cybersecurity Use Cases
+
+### 🔵 Blue Team
+
+* Log analysis
+* Threat detection
+* IOC extraction
+
+### 🔴 Red Team
+
+* Enumeration
+* Remote command execution
+* Obfuscated payloads
+
+### 🧑‍💻 System Admin
+
+* Automation
+* Configuration management
+* Integrity checks
+
+---
+
+## 🌍 Remote Execution
+
+```powershell
+Invoke-Command
+```
+
+👉 Execute commands on remote systems
+👉 Used in:
+
+* Incident response
+* Administration
+* Penetration testing
+
+```powershell
+Get-Help Invoke-Command -Examples
+```
+
+---
+
+# 🚀 Final Summary
+
+This PowerShell room teaches:
+
+* Object-based command execution
+* Advanced filtering & automation
+* System enumeration
+* Real-time monitoring
+* Remote command execution
+* Cybersecurity scripting skills
+
+👉 PowerShell is essential for:
+
+* SOC Analysts
+* Threat Hunters
+* Penetration Testers
+* System Administrators
+
+---
