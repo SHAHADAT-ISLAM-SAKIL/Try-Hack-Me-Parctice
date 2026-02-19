@@ -1,1 +1,366 @@
+# 💻 TryHackMe — Windows Command Line Notes
+
+This note summarizes the **TryHackMe Windows Command Line walkthrough**, covering essential commands for system information gathering, networking, file management, and process control.
+
+---
+
+# 📌 1. Introduction to CLI
+
+### ✅ GUI vs CLI
+
+| GUI            | CLI                |
+| -------------- | ------------------ |
+| Mouse-based    | Keyboard-based     |
+| User friendly  | Powerful & fast    |
+| More resources | Low resource usage |
+
+### ⭐ Advantages of CLI
+
+* Low resource usage
+* Automation via scripting
+* Remote management easier
+
+👉 Default Windows shell = **cmd.exe**
+
+---
+
+# 📊 2. Basic System Information Commands
+
+---
+
+## ✅ set
+
+```cmd
+set
+```
+
+👉 Shows environment variables (like PATH)
+
+---
+
+## ✅ ver
+
+```cmd
+ver
+```
+
+👉 Displays Windows version
+
+---
+
+## ✅ systeminfo
+
+```cmd
+systeminfo
+```
+
+👉 Shows:
+
+* OS version
+* Hostname
+* RAM
+* Patch level
+
+---
+
+## ✅ Pagination
+
+```cmd
+systeminfo | more
+```
+
+👉 Shows output page by page
+
+---
+
+## ✅ Help Command
+
+```cmd
+help ipconfig
+ipconfig /?
+```
+
+👉 Shows syntax & usage
+
+---
+
+## ✅ cls
+
+```cmd
+cls
+```
+
+👉 Clears screen
+
+---
+
+# 🌐 3. Network Troubleshooting Commands
+
+---
+
+## ✅ ipconfig
+
+```cmd
+ipconfig
+```
+
+👉 Shows IP, subnet mask, gateway
+
+---
+
+## ✅ ipconfig /all
+
+```cmd
+ipconfig /all
+```
+
+👉 Shows:
+
+* MAC address
+* DHCP
+* DNS
+* Adapter details
+
+---
+
+## ✅ ping
+
+```cmd
+ping google.com
+```
+
+👉 Tests connectivity
+
+---
+
+## ✅ tracert
+
+```cmd
+tracert google.com
+```
+
+👉 Shows network hops
+
+---
+
+## ✅ nslookup
+
+```cmd
+nslookup google.com
+```
+
+👉 Resolves domain ↔ IP
+
+---
+
+## ✅ netstat
+
+```cmd
+netstat
+```
+
+👉 Shows active connections
+
+### Useful Flags
+
+| Command    | Meaning         |
+| ---------- | --------------- |
+| netstat -a | All connections |
+| netstat -b | Executable name |
+| netstat -o | Process ID      |
+| netstat -n | Numeric output  |
+
+---
+
+# 📁 4. File & Directory Management
+
+---
+
+## ✅ cd
+
+```cmd
+cd
+cd ..
+```
+
+👉 Change directory / go back
+
+---
+
+## ✅ dir
+
+```cmd
+dir
+dir /a
+dir /s
+```
+
+| Option | Meaning        |
+| ------ | -------------- |
+| /a     | Hidden files   |
+| /s     | Recursive list |
+
+---
+
+## ✅ tree
+
+```cmd
+tree
+```
+
+👉 Shows folder structure visually
+
+---
+
+## ✅ mkdir & rmdir
+
+```cmd
+mkdir backup
+rmdir backup
+```
+
+👉 Create / delete directory
+
+---
+
+## ✅ type
+
+```cmd
+type file.txt
+```
+
+👉 Reads text file
+
+---
+
+## ✅ copy & move
+
+```cmd
+copy a.txt b.txt
+move a.txt C:\folder
+```
+
+---
+
+## ✅ del / erase
+
+```cmd
+del file.txt
+```
+
+👉 Deletes file
+
+---
+
+## ✅ Wildcard
+
+```cmd
+copy *.md markdown
+```
+
+👉 Copy multiple files
+
+---
+
+# ⚙️ 5. Process Management
+
+---
+
+## ✅ tasklist
+
+```cmd
+tasklist
+```
+
+👉 Shows running processes
+
+---
+
+## ✅ Filter Process
+
+```cmd
+tasklist /fi "ImageName eq notepad.exe"
+```
+
+---
+
+## ✅ taskkill
+
+```cmd
+taskkill /pid 1234
+```
+
+👉 Kill process by PID
+
+---
+
+# 🛠️ 6. System Maintenance Commands
+
+---
+
+## ✅ chkdsk
+
+```cmd
+chkdsk
+```
+
+👉 Disk error check
+
+---
+
+## ✅ driverquery
+
+```cmd
+driverquery
+```
+
+👉 Shows installed drivers
+
+---
+
+## ✅ sfc
+
+```cmd
+sfc /scannow
+```
+
+👉 Repairs corrupted system files
+
+---
+
+# 🔌 7. Shutdown Commands
+
+| Command     | Meaning        |
+| ----------- | -------------- |
+| shutdown /s | Shutdown       |
+| shutdown /r | Restart        |
+| shutdown /a | Abort shutdown |
+
+---
+
+# ⭐ Exam Tips (TryHackMe)
+
+👉 systeminfo → full system details
+👉 ipconfig /all → detailed network info
+👉 netstat -b → process using port
+👉 tasklist → running process
+👉 taskkill → stop process
+👉 dir /a → hidden files
+👉 tree → folder structure
+
+---
+
+# 🚀 Final Summary
+
+This room teaches:
+
+* System info gathering
+* Network diagnostics
+* File management
+* Process control
+* System troubleshooting
+
+These skills are **essential for SOC analyst, pentester & system admin roles**.
+
+---
 
