@@ -1,1 +1,96 @@
-updates soon
+Task 2 : OSI Model
+✅ 7️⃣ Application Layer — (User Interaction)
+
+👉 তুমি WhatsApp খুলে “Hi” লিখে send করলে
+
+App message তৈরি করলো
+
+User interface এখানেই
+
+📌 Example protocol: HTTP, SMTP, FTP
+✅ Real life: তুমি message লিখছো
+
+✅ 6️⃣ Presentation Layer — (Format & Security)
+
+👉 Message secure & readable বানায়
+
+Encryption (WhatsApp end-to-end encryption)
+
+Compression
+
+📌 SSL/TLS encryption
+
+✅ Real life: Message lock করে পাঠানো (secure envelope)
+
+✅ 5️⃣ Session Layer — (Connection Control)
+
+👉 Sender ↔ Receiver connection manage
+
+Session create
+
+Sync & maintain
+
+✅ Real life: Call connect হওয়া বা chat session active থাকা
+
+✅ 4️⃣ Transport Layer — (End-to-End Delivery)
+
+👉 Message টুকরা টুকরা করে পাঠায়
+
+Port number add
+
+Reliable delivery
+
+📌 TCP = reliable delivery
+📌 UDP = fast delivery
+
+✅ Real life: Courier বড় পার্সেলকে ছোট প্যাকেটে ভাগ করে
+
+✅ 3️⃣ Network Layer — (Routing)
+
+👉 IP address add করে route ঠিক করে
+
+Router path select করে
+
+📌 IP = Internet Protocol
+
+✅ Real life: Courier city → district → area route ঠিক করা
+
+✅ 2️⃣ Data Link Layer — (Local Delivery)
+
+👉 MAC address add করে local network এ deliver
+
+Switch কাজ করে
+
+Error detect
+
+📌 MAC = Media Access Control
+
+✅ Real life: Courier building / apartment locate করা
+
+✅ 1️⃣ Physical Layer — (Signal Transmission)
+
+👉 Data bits হয়ে cable / WiFi দিয়ে যায়
+
+Electrical / radio signal
+
+✅ Real life: Courier bike দিয়ে parcel পৌঁছানো
+
+🎯 ⭐ Short Story (Exam Style)
+
+👉 When sending a WhatsApp message, the Application layer creates the message, 
+Presentation encrypts it, Session manages the chat connection, Transport segments 
+data using TCP, Network adds IP for routing, Data Link adds MAC for local delivery, 
+and Physical transmits bits over the network.
+
+
+
+Task 3 : TCP/IP Model 
+Application Layer: The OSI model application, presentation and session layers, i.e., layers 5, 6, and 7, are grouped into the application layer in the TCP/IP model.
+Transport Layer: This is layer 4.
+Internet Layer: This is layer 3. The OSI model’s network layer is called the Internet layer in the TCP/IP model.
+Link Layer: This is layer 2.
+
+
+
+task 4 : IP Addresses and Subnets
+
