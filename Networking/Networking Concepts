@@ -93,4 +93,415 @@ Link Layer: This is layer 2.
 
 
 task 4 : IP Addresses and Subnets
+🌐 IP Address & Subnet — Easy Notes
+📘 1️⃣ IP Address
+🔹 What is an IP Address?
 
+An IP Address (Internet Protocol Address) is a unique identifier assigned to each device on a network.
+
+👉 Example:
+
+192.168.1.1
+
+📮 Real-life analogy:
+IP address works like a home postal address so devices can find each other.
+
+🔹 IPv4 Structure
+
+IPv4 = 32 bits
+
+Divided into 4 octets
+
+Each octet ranges from 0–255
+
+👉 Example:
+
+192.168.1.10
+🔹 Special Addresses
+Type	Example
+Network Address	192.168.1.0
+Broadcast Address	192.168.1.255
+Host Range	192.168.1.1 – 192.168.1.254
+📘 2️⃣ Subnet & Subnet Mask
+🔹 What is a Subnet?
+
+A subnet is a smaller network created by dividing a large network.
+
+✅ Benefits:
+
+Improves performance
+
+Enhances security
+
+Reduces broadcast traffic
+
+🔹 Subnet Mask
+
+A subnet mask determines the network portion and host portion of an IP.
+
+👉 Example:
+
+IP Address: 192.168.1.10
+Subnet Mask: 255.255.255.0
+
+✔ Network → 192.168.1
+✔ Host → 10
+
+🔹 CIDR Notation
+
+Subnet masks can be written using CIDR:
+
+192.168.1.0/24
+
+👉 /24 means 24 bits are network bits
+
+✔ Usable host range:
+
+192.168.1.1 – 192.168.1.254
+📘 3️⃣ Private vs Public IP
+🔹 Private IP Address
+
+Used inside local networks and not directly accessible from the Internet.
+
+📌 Private IP ranges (RFC 1918):
+
+10.0.0.0 – 10.255.255.255
+172.16.0.0 – 172.31.255.255
+192.168.0.0 – 192.168.255.255
+🔹 Public IP Address
+
+Globally unique
+
+Assigned by ISP
+
+Used for Internet communication
+
+🔹 Shortcut Trick (Exam Tip)
+
+Private IP always starts with:
+
+10.x.x.x
+172.16–31.x.x
+192.168.x.x
+
+👉 Anything else = Public IP
+
+✅ Quick Summary
+
+IP Address = Device identity
+
+IPv4 = 32 bits, 4 octets
+
+Subnet = Network division
+
+Subnet Mask = Network/Host separation
+
+/24 = 255.255.255.0
+
+Private IP = 10 / 172(16–31) / 192.168
+
+Public IP = Internet use
+📘 4️⃣ Routing (Easy Note)
+🔹 Routing কী?
+
+Routing হলো এমন একটি process যেখানে router data packet কে এক network থেকে অন্য network এ পাঠায়।
+
+👉 সহজভাবে:
+Routing = data এর সঠিক পথ খুঁজে দেয়া
+
+📮 Real-life analogy:
+Post office যেমন চিঠি সঠিক জায়গায় পাঠায়, router তেমন packet পাঠায়।
+
+🔹 Router কী করে?
+
+✔ Destination IP address দেখে
+✔ Best path নির্বাচন করে
+✔ Packet next network এ forward করে
+
+👉 Packet সাধারণত একাধিক router পার হয়ে destination এ পৌঁছায়
+
+🔹 Routing কোথায় কাজ করে?
+
+👉 Routing কাজ করে OSI Model এর Network Layer (Layer 3) এ
+
+🔹 Routing Example
+
+ধরো:
+
+PC1 → Router → Internet → Router → Server
+
+👉 PC1 server এর IP পাঠায়
+👉 Router IP দেখে packet forward করে
+👉 শেষ পর্যন্ত server এ পৌঁছায়
+
+🔹 Routing Table
+
+Router এর ভিতরে একটি Routing Table থাকে
+
+👉 এতে থাকে:
+
+Destination network
+
+Next hop
+
+Interface
+
+👉 Router এই table দেখে packet forward করে
+
+🔹 Types of Routing
+1️⃣ Static Routing
+
+Manually configure করা
+
+Small network এ ব্যবহার হয়
+
+2️⃣ Dynamic Routing
+
+Automatically route learn করে
+
+Large network এ ব্যবহার হয়
+
+Example: RIP, OSPF, EIGRP
+
+✅ Quick Summary
+
+✔ Routing = packet এর পথ নির্ধারণ
+✔ Router = packet forward করে
+✔ Layer = OSI Layer 3
+✔ Routing Table = path decision নেয়
+✔ Static = manual
+✔ Dynamic = automatic
+
+
+
+
+task 5: UDP and TCP
+1. TCP vs UDP
+UDP (User Datagram Protocol)
+
+লেয়ার: Transport Layer (Layer 4)
+
+Connectionless: কোনো সংযোগ প্রতিষ্ঠা করতে হবে না।
+
+Reliable? না, ডেলিভারি কনফার্ম করে না।
+
+Port Number: Host-এর ভিতরে কোন Process-এ পাঠাবেন তা জানায়। Port 0 রিজার্ভ করা আছে, 1–65535 পর্যন্ত ব্যবহার করা যায়।
+
+উদাহরণ: স্ট্যান্ডার্ড মেইল সার্ভিস — ডেলিভারি নিশ্চিত নয়, কিন্তু দ্রুত ও সস্তা।
+
+TCP (Transmission Control Protocol)
+
+লেয়ার: Transport Layer (Layer 4)
+
+Connection-oriented: প্রথমে সংযোগ স্থাপন করতে হবে।
+
+Reliable: প্রতি ডেটা octet-এর সিকোয়েন্স নম্বর থাকে, receiver lost বা duplicate packet চেনে এবং acknowledgement পাঠায়।
+
+Port Number: UDP-এর মতোই, 1–65535 পর্যন্ত।
+
+Connection Establishment: Three-way handshake
+
+Three-way handshake ধাপ:
+
+SYN: Client সার্ভারকে সংযোগের জন্য SYN প্যাকেট পাঠায়।
+
+SYN-ACK: Server SYN প্যাকেট পেয়ে SYN-ACK পাঠায়।
+
+ACK: Client SYN-ACK পেয়ে ACK পাঠায়।
+
+এভাবে TCP সংযোগ শুরু হয়।
+
+2. প্রশ্নের উত্তর
+
+Q1: Which protocol requires a three-way handshake?
+✅ Answer: TCP
+
+Q2: What is the approximate number of port numbers (in thousands)?
+
+মোট port number = 65535 ≈ 65 thousand
+✅ Answer: 65
+
+
+
+
+
+
+
+task 6 : Encapsulation
+১. Encapsulation কী?
+
+Encapsulation হলো ডেটা লেয়ারের ভেতরে লেয়ার প্যাকিং করার প্রক্রিয়া। ভাবুন, এটি হলো এক ধরণের বক্সের মধ্যে আরেকটি বক্স রাখা।
+
+Header (হেডার): লেয়ারের জন্য প্রয়োজনীয় নিয়ন্ত্রণ তথ্য থাকে, যেমন ঠিকানা, সিকোয়েন্স নম্বর, বা ত্রুটি যাচাই (error checking)।
+
+Trailer (ট্রেইলার): কিছু লেয়ারে থাকে, যেমন ডেটা লিংক লেয়ারে ত্রুটি শনাক্ত করার জন্য।
+
+এটি প্রতিটি লেয়ারকে শুধুমাত্র নিজের কাজের দিকে মনোযোগ দিতে সাহায্য করে।
+
+২. ডেটা কিভাবে Encapsulate হয় Step by Step
+
+ধরি আপনি কোনো মেসেজ পাঠাচ্ছেন বা TryHackMe-তে সার্চ করছেন।
+
+Step 1: Application Layer (অ্যাপ্লিকেশন লেয়ার)
+
+আপনি সার্চ বক্সে কীওয়ার্ড টাইপ করেছেন বা ইমেইল লিখেছেন।
+
+অ্যাপ্লিকেশন ডেটা তৈরি করে।
+
+এখন এটি হলো Application Data।
+
+Step 2: Transport Layer (ট্রান্সপোর্ট লেয়ার)
+
+TCP বা UDP প্রোটোকল এই ডেটার সাথে একটি Transport Header যোগ করে।
+
+TCP/UDP হেডারে থাকে পোর্ট নম্বর, সিকোয়েন্স নম্বর, error checking ইত্যাদি।
+
+ফলস্বরূপ ডেটা এখন হলো TCP Segment বা UDP Datagram।
+
+Step 3: Network Layer (নেটওয়ার্ক লেয়ার)
+
+IP লেয়ার যোগ করে source ও destination IP ঠিকানা।
+
+এখন এটি হলো IP Packet, যা ইন্টারনেটে রাউট করতে পারে।
+
+Step 4: Data Link Layer (ডেটা লিংক লেয়ার)
+
+Ethernet বা WiFi হেডার ও ট্রেইলার যোগ করে।
+
+এটি হলো Frame, যা ফিজিক্যাল মিডিয়ার মাধ্যমে পাঠানো যায়।
+
+Step 5: Physical Layer (ফিজিক্যাল লেয়ার)
+
+ফ্রেমকে ইলেকট্রিক্যাল সিগন্যাল বা রেডিও ওয়েভে রূপান্তর করে পাঠানো হয়।
+
+সারসংক্ষেপে:
+
+Application Data → TCP Segment → IP Packet → Data Link Frame → Physical Transmission
+
+৩. Receiving End: Decapsulation
+
+যখন ডেটা ডেস্টিনেশনে পৌঁছায়:
+
+Link Layer: ফ্রেমের হেডার/ট্রেইলার সরায়।
+
+Network Layer: IP হেডার সরায়।
+
+Transport Layer: TCP/UDP হেডার সরায়।
+
+Application Layer: মূল ডেটা ব্যবহারকারীর কাছে পৌঁছে।
+
+অর্থাৎ nested box খোলার মতো ধাপে ধাপে ডেটা বের হয়।
+
+৪. উদাহরণ: TryHackMe-তে সার্চ করা
+
+আপনি সার্চ বক্সে কীওয়ার্ড টাইপ করেন।
+
+ব্রাউজার HTTPS ব্যবহার করে HTTP request তৈরি করে (Application Layer)।
+
+TCP Layer সার্ভারের সাথে কনেকশন স্থাপন করে (Three-way Handshake), তারপর HTTP request encapsulate করে TCP Segment তৈরি করে।
+
+IP Layer source এবং destination IP যোগ করে IP Packet তৈরি করে।
+
+Data Link Layer frame তৈরি করে WiFi/Ethernet মাধ্যমে রাউটারকে পাঠায়।
+
+রাউটার link layer header/trailer সরিয়ে IP ঠিকানা দেখে সঠিক পথে packet ফরোয়ার্ড করে।
+
+সার্ভারে সব লেয়ার reverse process করে HTTP request অ্যাপ্লিকেশন পর্যন্ত পৌঁছে।
+
+৫. মূল কথা
+
+Encapsulation: ডেটা লেয়ারের হেডার/ট্রেইলার যোগ করা।
+
+Decapsulation: ডেটা থেকে হেডার/ট্রেইলার সরানো।
+
+প্রতিটি লেয়ার শুধু নিজের কাজের দিকে মনোযোগ দেয়।
+
+এটি নেটওয়ার্ককে মডুলার ও সহজে Troubleshootable করে।
+
+
+
+
+
+
+
+
+task 7 : telent
+Telnet Lab Notes – TryHackMe
+1. Lab Overview
+
+Telnet একটি network protocol যা remote terminal connection দেয়।
+
+TCP port‑এ text commands পাঠিয়ে server‑এর সাথে communicate করা যায়।
+
+মূলত testing, debugging ও service exploration‑এর জন্য ব্যবহার করা হয়।
+
+2. Target Services on 10.48.150.68
+Service	Port	Description
+Echo Server	7	Sends back whatever you type
+Daytime Server	13	Sends current date & time
+Web (HTTP) Server	80	Serves webpages
+
+⚠️ Note: Echo & Daytime servers are security risks in real networks; used here for learning purposes only.
+
+3. Commands & Examples
+3.1 Echo Server
+telnet 10.48.150.68 7
+
+Example Interaction:
+
+Hi
+Hi
+How are you?
+How are you?
+Bye
+Bye
+
+Exit connection:
+
+CTRL + ]
+telnet> quit
+3.2 Daytime Server
+telnet 10.48.150.68 13
+
+Example Output:
+
+Thu Jun 20 12:36:32 PM UTC 2024
+Connection closed by foreign host.
+3.3 Web Server (HTTP)
+telnet 10.48.150.68 80
+
+Send HTTP request:
+
+GET / HTTP/1.1
+Host: telnet.thm
+
+
+⚠️ End request with two Enters (blank line).
+
+Example Response Header:
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+Server: lighttpd/1.4.63
+
+Flag Found in Page Content:
+
+THM{TELNET_MASTER}
+4. Key Takeaways
+
+Telnet lets you connect to any TCP port and interact with a service.
+
+Echo server → practice sending/receiving messages.
+
+Daytime server → see server info (date & time).
+
+HTTP server → manually request pages and see headers.
+
+HTTP server info can be found in the Server: header.
+
+Flags are usually embedded in the page content.
+
+5. Answers (TryHackMe)
+Question	Answer
+Name & version of HTTP server	lighttpd/1.4.63
+Flag viewed on the page	THM{TELNET_MASTER}
