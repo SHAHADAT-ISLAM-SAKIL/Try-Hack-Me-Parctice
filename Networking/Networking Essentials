@@ -1,1 +1,649 @@
-updates 
+Task 2 : DHCP: Give me my Nettowrking Settings
+
+## 📡 DHCP (Dynamic Host Configuration Protocol)
+
+### 🔎 What is DHCP?
+
+**DHCP (Dynamic Host Configuration Protocol)** is a network protocol that automatically assigns IP addresses and other network configuration settings to devices on a network.
+
+👉 It removes the need for manual IP configuration.
+
+---
+
+### 🎯 Why DHCP is Important
+
+* Automatically assigns **IP address**
+* Provides **Subnet Mask**
+* Sets **Default Gateway**
+* Configures **DNS Server**
+* Reduces configuration errors
+* Saves time for network administrators
+
+---
+
+### ⚙️ How DHCP Works (DORA Process)
+
+DHCP follows a 4-step process known as **DORA**:
+
+1. **Discover**
+
+   * Client broadcasts to find DHCP server
+
+2. **Offer**
+
+   * DHCP server offers an available IP address
+
+3. **Request**
+
+   * Client requests the offered IP
+
+4. **Acknowledge**
+
+   * Server confirms and assigns the IP
+
+👉 After this process, the device can communicate on the network.
+
+---
+
+### 💡 Real-Life Example
+
+When you connect your phone or laptop to WiFi:
+
+* The router acts as a **DHCP server**
+* It automatically assigns an IP address
+* You can access the internet without manual setup
+
+---
+
+### ✅ Advantages of DHCP
+
+* Easy network management
+* Automatic configuration
+* Prevents IP conflicts
+* Suitable for large networks
+
+---
+
+### ❌ Disadvantages of DHCP
+
+* Dependency on DHCP server
+* Possible security risks if not configured properly
+
+---
+
+### 🧠 Short Exam Note
+
+```
+DHCP is a protocol that automatically assigns IP address and network settings to devices using the DORA process (Discover, Offer, Request, Acknowledge).
+```
+
+
+
+
+
+
+
+task 3: ARP: Bridging layer 3 addressing to layer 2 addressing
+## 🔗 ARP: Bridging Layer 3 Addressing to Layer 2 Addressing
+
+### 🔎 What is ARP?
+
+**ARP (Address Resolution Protocol)** is a network protocol used to map a **Layer 3 IP address** to a **Layer 2 MAC address**.
+
+👉 In simple words, ARP helps devices find the physical (MAC) address of another device using its IP address.
+
+---
+
+### 🎯 Why ARP is Needed
+
+In a network:
+
+* Communication at **Layer 3 (Network Layer)** uses IP addresses
+* Communication at **Layer 2 (Data Link Layer)** uses MAC addresses
+
+✅ ARP acts as a bridge between these two layers so devices can communicate properly.
+
+---
+
+### ⚙️ How ARP Works (Step-by-Step)
+
+1. **ARP Request (Broadcast)**
+
+   * Sender asks: *"Who has this IP address?"*
+   * The request is broadcast to all devices in the local network
+
+2. **ARP Reply (Unicast)**
+
+   * The device with that IP responds with its MAC address
+
+3. **ARP Table Update**
+
+   * Sender stores the IP → MAC mapping in its ARP cache/table
+
+👉 After this, data can be sent using the correct MAC address.
+
+---
+
+### 💡 Example Scenario
+
+* PC A wants to send data to PC B
+* PC A knows PC B’s IP but not MAC
+* PC A sends ARP Request
+* PC B replies with MAC address
+* Communication starts
+
+---
+
+### 📊 ARP Table
+
+Devices maintain an **ARP cache/table** that stores:
+
+```
+IP Address  →  MAC Address
+```
+
+This reduces repeated ARP requests and improves performance.
+
+---
+
+### ✅ Advantages of ARP
+
+* Enables IP-to-MAC resolution
+* Improves communication efficiency
+* Uses caching for faster transmission
+
+---
+
+### ❌ Limitations of ARP
+
+* Works only in local network (LAN)
+* Vulnerable to ARP spoofing/poisoning attacks
+
+---
+
+### 🧠 Short Exam Note
+
+```
+ARP (Address Resolution Protocol) maps Layer 3 IP addresses to Layer 2 MAC addresses using ARP Request and ARP Reply messages.
+```
+
+
+
+
+
+
+
+
+task 4: ICMP: Troubleshooting Networks
+## 🌐 ICMP: Troubleshooting Networks
+
+### 🔎 What is ICMP?
+
+**ICMP (Internet Control Message Protocol)** is a network layer protocol used by devices to send **error messages** and **diagnostic information**.
+
+👉 It does not carry user data like TCP/UDP.
+👉 It helps monitor and troubleshoot network communication.
+
+---
+
+### 🎯 Why ICMP is Important
+
+* Detect network connectivity issues
+* Report errors (destination unreachable, timeout)
+* Assist diagnostic tools like **Ping** and **Traceroute**
+* Help routers communicate network status
+
+---
+
+### ⚙️ How ICMP Works
+
+When a problem occurs during packet delivery:
+
+1. Router or host detects an issue
+2. It sends an **ICMP message** back to the sender
+3. Sender understands the problem and can troubleshoot
+
+---
+
+### 📌 Common ICMP Message Types
+
+#### 1️⃣ Echo Request & Echo Reply
+
+* Used by **Ping**
+* Checks if a host is reachable
+
+👉 Example:
+
+```
+Ping → Echo Request  
+Reply → Echo Reply
+```
+
+---
+
+#### 2️⃣ Destination Unreachable
+
+* Sent when packet cannot reach destination
+* Reasons: network down, host down, blocked port
+
+---
+
+#### 3️⃣ Time Exceeded
+
+* Sent when **TTL expires**
+* Used heavily in **Traceroute**
+
+---
+
+#### 4️⃣ Redirect Message
+
+* Router informs a better route exists
+
+---
+
+### 💡 Real-Life Example
+
+You ping a website:
+
+* Your PC sends **ICMP Echo Request**
+* Server responds with **Echo Reply**
+* If no reply → network issue detected
+
+---
+
+### 📊 ICMP in Action (Ping & Traceroute)
+
+* **Ping** → Tests reachability using Echo Request/Reply
+* **Traceroute** → Uses TTL expiration + ICMP Time Exceeded
+
+---
+
+### ✅ Advantages of ICMP
+
+* Essential for troubleshooting
+* Helps detect routing and connectivity problems
+* Provides network diagnostics
+
+---
+
+### ❌ Limitations of ICMP
+
+* Can be blocked by firewalls
+* Sometimes used in network attacks (ICMP flood)
+
+---
+
+### 🧠 Short Exam Note
+
+```
+ICMP is a network layer protocol used to send error and diagnostic messages, enabling tools like Ping and Traceroute to troubleshoot network connectivity.
+```
+# 🌐 Network Troubleshooting & Diagnostic Protocols
+
+এই note এ আমরা দেখব: **ARP, DHCP, ICMP, Ping, Traceroute, Tracert**, এবং তাদের কার্যপ্রণালী।
+
+---
+
+## 1️⃣ DHCP (Dynamic Host Configuration Protocol)
+
+* Automatically assigns **IP address** & network settings
+* Removes need for manual configuration
+* **DORA Process:**
+
+  1. **Discover:** Client broadcast DHCP server search
+  2. **Offer:** Server offers an IP
+  3. **Request:** Client requests IP
+  4. **Acknowledge:** Server confirms assignment
+
+**Example:** WiFi এ ফোন connect → router assign করে IP automatically
+
+---
+
+## 2️⃣ ARP (Address Resolution Protocol)
+
+* Maps **Layer 3 IP → Layer 2 MAC**
+* Essential for local network communication
+
+**Process:**
+
+1. **ARP Request (Broadcast):** "Who has 192.168.1.10?"
+2. **ARP Reply (Unicast):** Device replies with MAC
+3. **ARP Table Update:** Mapping saved in cache
+
+**Key Concepts:**
+
+* IP = Logical address (network-wide)
+* MAC = Physical address (local delivery)
+* Broadcast = Send message to all devices in LAN
+
+**Example:** Laptop → router MAC via ARP → Internet packet forward
+
+---
+
+## 3️⃣ ICMP (Internet Control Message Protocol)
+
+* Sends **error messages & diagnostic info**
+* Helps troubleshoot network issues
+* **Used by:** Ping, Traceroute
+
+**Common Messages:**
+
+* **Echo Request / Reply** → Ping
+* **Destination Unreachable** → Host/network unreachable
+* **Time Exceeded** → TTL expired (Traceroute)
+* **Redirect** → Better route info
+
+**Example:** Ping google.com → ICMP Echo Request → Reply → latency check
+
+---
+
+## 4️⃣ Ping
+
+* Tests **reachability** & **latency**
+* Uses **ICMP Echo Request/Reply**
+
+**Commands:**
+
+* Linux/Mac: `ping google.com`
+* Windows: `ping google.com`
+* Linux: `ping 192.168.11.1 -c 4` → 4 packets
+* Windows: `ping 192.168.11.1 -n 4` → 4 packets
+
+---
+
+## 5️⃣ Traceroute / Tracert
+
+* Shows **hop-by-hop path** from source → destination
+* Uses **TTL + ICMP Time Exceeded**
+
+**Commands:**
+
+* Linux/Mac: `traceroute google.com`
+* Windows: `tracert google.com`
+
+**Output Example:**
+
+```
+1   192.168.1.1    2 ms
+2   10.10.0.1      15 ms
+3   172.217.0.14   35 ms
+```
+
+---
+
+## 6️⃣ MAC vs IP in Internet Communication
+
+* **IP address:** Logical, end-to-end same
+* **MAC address:** Physical, changes each hop (local link)
+* **WiFi vs LAN:** Medium difference
+
+  * WiFi → wireless radio
+  * LAN → wired cable
+* Both use MAC for local delivery
+
+---
+
+## 7️⃣ Quick Summary
+
+| Protocol/Tool      | Purpose                 | Layer     | Key Feature                                 |
+| ------------------ | ----------------------- | --------- | ------------------------------------------- |
+| DHCP               | Automatic IP assignment | Network   | DORA process                                |
+| ARP                | Map IP → MAC            | Data Link | Broadcast + Cache                           |
+| ICMP               | Error & diagnostics     | Network   | Echo, Destination Unreachable, TTL Exceeded |
+| Ping               | Test reachability       | Network   | Uses ICMP Echo                              |
+| Traceroute/Tracert | Show path               | Network   | TTL-based hop tracing                       |
+
+---
+
+### 💡 Exam Short Notes
+
+```
+- DHCP: Automatically assigns IP + network info (DORA)  
+- ARP: Maps IP → MAC for local network  
+- ICMP: Error & diagnostic messages (Ping/Traceroute)  
+- Ping: Tests reachability using ICMP Echo  
+- Traceroute/Tracert: Shows hop-by-hop path using TTL & ICMP  
+- IP = end-to-end logical address, MAC = local physical address
+```
+
+
+
+
+
+
+
+
+Task 6 : Routing
+# 🌐 Routing: Directing Packets Across Networks
+
+### 🔎 What is Routing?
+
+**Routing** হলো network process যার মাধ্যমে **data packets** সঠিক **destination network** এ পাঠানো হয়।
+
+* Router বা Layer 3 device packet কে forward করে
+* Network topology অনুযায়ী best path choose করা হয়
+
+---
+
+### 🎯 Why Routing is Important
+
+* Connects multiple networks
+* Ensures data reaches correct destination
+* Optimizes path and reduces congestion
+* Enables Internet communication
+
+---
+
+### ⚙️ How Routing Works
+
+1. **Packet Creation:** Source device বানায় packet with **destination IP**
+2. **Routing Table Lookup:** Router দেখে কোন interface বা next hop দিয়ে packet পাঠানো হবে
+3. **Forwarding:** Packet পরবর্তী router বা destination device এ পাঠানো হয়
+4. **Repeat:** প্রতিটি intermediate router একই process করে until destination
+
+---
+
+### 📌 Types of Routing
+
+| Type                     | Description                                           | Example            |
+| ------------------------ | ----------------------------------------------------- | ------------------ |
+| **Static Routing**       | Manual route configuration                            | Small LAN          |
+| **Dynamic Routing**      | Router automatically learns routes                    | OSPF, RIP, EIGRP   |
+| **Default Routing**      | Route packets to default gateway if no match in table | Home router to ISP |
+| **Policy-Based Routing** | Route based on policies (source, protocol)            | Enterprise network |
+
+---
+
+### 🔗 Routing vs Switching
+
+| Feature    | Routing                          | Switching                 |
+| ---------- | -------------------------------- | ------------------------- |
+| Layer      | 3 (Network)                      | 2 (Data Link)             |
+| Device     | Router                           | Switch                    |
+| Function   | Forward packets between networks | Forward frames within LAN |
+| Addressing | IP                               | MAC                       |
+
+---
+
+### 💡 Real-Life Example
+
+* তুমি Bangladesh থেকে Dubai friend কে message পাঠালে:
+
+  1. Laptop → Router
+  2. Router → ISP → Internet
+  3. Destination router Dubai network → Friend device
+* প্রতিটা router **routing table** check করে best path নির্বাচন করে
+
+---
+
+### ✅ Routing Protocols (Dynamic)
+
+* **RIP (Routing Information Protocol)** → distance vector
+* **OSPF (Open Shortest Path First)** → link state
+* **EIGRP (Enhanced Interior Gateway Routing Protocol)** → hybrid
+
+---
+
+### 🧠 Short Exam Note
+
+```id="routing-short-note"
+Routing is the process of forwarding packets from source to destination across networks using routers, routing tables, and routing protocols. Types include static, dynamic, default, and policy-based routing.
+```
+
+
+
+
+
+
+
+
+task 6: NAT
+# 🌐 NAT: Network Address Translation
+
+### 🔎 What is NAT?
+
+**NAT (Network Address Translation)** হলো network technique যা **private IP addresses** কে **public IP addresses** এ convert করে, যাতে devices Internet access করতে পারে।
+
+* সাধারণত **router / firewall** এই কাজ করে
+* Saves public IP addresses
+* Adds a layer of security
+
+---
+
+### 🎯 Why NAT is Important
+
+* Enables multiple devices in LAN to share single public IP
+* Conserves IPv4 addresses
+* Hides internal network structure from Internet (security)
+* Allows private networks to communicate with the Internet
+
+---
+
+### ⚙️ How NAT Works
+
+1. Device sends packet with **private IP**
+2. Router replaces **source IP** with **public IP**
+3. Router saves translation in **NAT table**
+4. Return packet → router translates **public IP → private IP**
+
+---
+
+### 📌 Types of NAT
+
+| Type                  | Description                                         | Example                         |
+| --------------------- | --------------------------------------------------- | ------------------------------- |
+| **Static NAT**        | One-to-one mapping                                  | 192.168.1.10 → 203.0.113.10     |
+| **Dynamic NAT**       | Private → public from pool                          | 192.168.1.0/24 → 203.0.113.1-10 |
+| **PAT / Overloading** | Multiple private IPs → single public IP using ports | Home router sharing 1 public IP |
+
+---
+
+### 💡 Real-Life Example
+
+* Your laptop: 192.168.1.5
+* Router public IP: 203.0.113.5
+* Laptop requests google.com
+* Router replaces **192.168.1.5 → 203.0.113.5**
+* Google replies → router maps back → **192.168.1.5**
+
+---
+
+### ✅ Advantages
+
+* Saves public IP addresses
+* Enables multiple devices Internet access
+* Adds network security
+
+---
+
+### ❌ Limitations
+
+* Breaks end-to-end IP traceability
+* Some protocols/apps may need port forwarding
+
+---
+
+### 🧠 Short Exam Note
+
+```id="nat-short-note"
+NAT translates private IP addresses to public IP addresses, enabling multiple LAN devices to access the Internet while conserving public IPs and adding security. Types: Static, Dynamic, PAT/Overloading.
+```
+
+
+
+
+
+
+
+1️⃣ ARP (Address Resolution Protocol)
+
+Layer: Data Link (Layer 2)
+Purpose / কাজ:
+
+Local network এ IP → MAC mapping বের করা
+
+Devices কে জানানো “এই IP ঠিক কোন MAC এ আছে”
+
+Essential for LAN communication
+
+Example:
+Laptop → Router MAC address জানতে ARP Request পাঠায় → Router reply দেয়
+
+2️⃣ DHCP (Dynamic Host Configuration Protocol)
+
+Layer: Network (Layer 3)
+Purpose / কাজ:
+
+Automatically assigns IP, Subnet, Gateway, DNS to devices
+
+Removes manual IP configuration
+
+Saves network admin time
+
+Example:
+Phone WiFi connect → router DHCP server automatically assigns IP → internet ready
+
+3️⃣ ICMP (Internet Control Message Protocol)
+
+Layer: Network (Layer 3)
+Purpose / কাজ:
+
+Network error reporting + diagnostic
+
+Used by Ping (Echo Request/Reply)
+
+Used by Traceroute (TTL expired → Time Exceeded)
+
+Example:
+Ping google.com → ICMP Echo Request → Reply → latency / reachability check
+
+4️⃣ NAT (Network Address Translation)
+
+Layer: Network (Layer 3)
+Purpose / কাজ:
+
+Converts private IP → public IP for Internet access
+
+Allows multiple devices to share one public IP
+
+Adds security by hiding internal network structure
+
+Example:
+Laptop (192.168.0.129) → Router NAT → 212.3.4.5 (public IP) → Internet → Reply mapped back to Laptop
+
+🔑 Short Summary Table
+Protocol	Layer	Main Task	Example
+ARP	2	IP → MAC mapping in LAN	Laptop finds Router MAC
+DHCP	3	Automatic IP assignment	WiFi assigns phone IP
+ICMP	3	Error reporting & diagnostics	Ping / Traceroute
+NAT	3	Private IP → Public IP translation	Home router sharing 1 public IP
+
+💡 Memory Trick:
+
+ARP: “Who has this IP?” → LAN MAC find
+
+DHCP: “Give me an IP” → auto configure
+
+ICMP: “Something went wrong?” → error / ping check
+
+NAT: “Hide me behind the public IP” → Internet access
